@@ -27,12 +27,15 @@ export class UserService {
     return this.httpClient.get<Array<User>>(`${this.baseUrl}/name/${username}`)
   }
 
-
   findAllAdmin(): Observable<Array<User>> {
     return this.httpClient.get<Array<User>>(this.baseUrl + "/admin");
   }
 
-  delete(idUser: Number): Observable<User> {
+  deleteUser(idUser: Number): Observable<User> {
     return this.httpClient.delete<User>(this.baseUrl + '/' + idUser)
+  }
+
+  deleteAdmin(idAdmin: Number): Observable<User>{
+    return this.httpClient.delete<User>(this.baseUrl + '/admin/' + idAdmin)
   }
 }

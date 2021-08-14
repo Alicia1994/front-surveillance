@@ -23,19 +23,8 @@ export class UserListComponent implements OnInit {
     );
   }
 
-
-// TRANSFORMATION DE L'OBSERVABLE POUR MANIPULER LE CONTENU DU TABLEAU
-// this.posts$ = this.addPostService.findAll().pipe(
-//   map((posts:Array<Post>) => {
-//         posts.forEach((post:Post) => {
-//           post.createdOn = 'toto'
-//         })
-//     return posts;
-// }));
-
   deleteUser(id: number){
-    this.userSub = this.userService.delete(id).subscribe(data =>{ 
-
+    this.userSub = this.userService.deleteUser(id).subscribe(data =>{ 
       // fonction de filtre
       this.users$ = this.users$.pipe(
         map(users=> users.filter(user => user.id != id))
