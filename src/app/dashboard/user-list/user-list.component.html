@@ -1,7 +1,7 @@
 <div class="container">
     <div *ngIf="users$ | async as users">
 
-    <h1>Mon tableau de bord USERS</h1>
+    <h1> Liste d'utilisateurs</h1>
 
     <div class="no-article" *ngIf="users.length == 0; else block">
 
@@ -43,8 +43,7 @@
             </td>
             
             <td>
-                    <button>
-                        <a class="bin" type="button" (click)="deleteUser(user.id)"> <i class="fas fa-trash"></i></a></button>
+                        <a class="bin" type="button" (click)="deleteUser(user.id)"> <i class="fas fa-trash"></i></a>
             </td>
         </tr>
     </table>

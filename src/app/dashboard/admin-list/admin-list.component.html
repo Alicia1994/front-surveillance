@@ -1,61 +1,66 @@
 <div class="container">
     <div *ngIf="admins$ | async as admins">
 
-    <h1>Mon tableau de bord ADMINS</h1>
+        <h1>Liste d'administrateurs</h1>
 
-    <div class="no-article" *ngIf="admins.length == 0; else block">
+        <div class="no-article" *ngIf="admins.length == 0; else block">
 
-        <p>Aucun administrateur enregistré !</p>
+            <p>Aucun administrateur enregistré !</p>
 
-    </div>
+        </div>
 
-    <ng-template #block>
+        <ng-template #block>
 
-    <table class="table"  >
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Mail</th>
-                <th>Pseudo</th>
-                <th>Rôle</th>
-                <th>Action</th>
-                <!-- <th>Date de création</th> -->
-        </thead>
-    
-        <tr *ngFor="let admin of admins">
-    <!-- (click)=addToAnotherTable(i) -->
-            <td>
-                <span>{{admin.id}}</span>
-            </td>
-            <td>
-                <span>{{admin.email}}</span>
-            </td>
-            <!-- <td>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Mail</th>
+                        <th>Pseudo</th>
+                        <th>Rôle</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                        <!-- <th>Date de création</th> -->
+                </thead>
+
+                <tr *ngFor="let admin of admins">
+                    <!-- (click)=addToAnotherTable(i) -->
+                    <td>
+                        <span>{{admin.id}}</span>
+                    </td>
+                    <td>
+                        <span>{{admin.email}}</span>
+                    </td>
+                    <!-- <td>
                 <span>{{user.password}}</span>
             </td> -->
-            <td>
-                <span>{{admin.username}}</span>
-            </td>
-            <td>
-                <span>{{admin.role}}</span>
-            </td>
-            <td>
-                    <button>
-                        <a class="bin" type="button" (click)="deleteUser(user.id)"> <i class="fas fa-trash"></i></a></button>
-            </td>
-            <!-- <td>
+                    <td>
+                        <span>{{admin.username}}</span>
+                    </td>
+                    <td>
+                        <span>{{admin.role}}</span>
+                    </td>
+                    <td>
+                        <span>{{setTimeToMoment(admin.dateAccount)}}</span>
+                    </td>
+                    <td>
+                        <a class="bin" type="button" (click)="deleteUser(user.id)"> <i class="fas fa-trash"></i></a>
+                    </td>
+                    <!-- <td>
               <select>
                  <option *ngFor="let mission of data.missions">
                     {{mission}}
                  </option>
               </select>
             </td> -->
-        </tr>
-    </table>
+                </tr>
+            </table>
 
-</ng-template>
+        </ng-template>
+    </div>
+
+<button>
+    <a [routerLink]="['/add-admin']" routerLinkActive="router-link-active" class="add-admin">Ajouter un admin</a>
+</button>
+
 </div>
-
-</div>
-
-<button [routerLink]="['/add-admin']" routerLinkActive="router-link-active" >Ajouter un admin</button>

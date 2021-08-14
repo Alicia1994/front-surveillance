@@ -1,0 +1,34 @@
+h1{
+    font-size: 1.4em;
+    text-align: center;
+}
+
+span{
+
+    font-size: 0.8rem;
+}
+
+.fa-trash{
+    font-size: 0.9rem;
+}
+
+button{
+    background-color: white;
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 3px;
+    border-image-source: linear-gradient(#FE58ED, #5890FE);
+    width: 250px;
+    align-self: center;
+}
+
+.add-admin{
+    margin: 5px;
+    color: rgba(88, 144, 254, 1);
+    font-weight: 600;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}

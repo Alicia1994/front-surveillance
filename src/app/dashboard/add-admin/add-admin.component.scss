@@ -1,0 +1,22 @@
+.container{
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 40px;
+    align-self: center;
+    text-align-last: center;
+}
+
+p{
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+input{
+    margin-bottom: 15px;
+  
+}
+
+button{
+    background-color: #A144E0;
+}

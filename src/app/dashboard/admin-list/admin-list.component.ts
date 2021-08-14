@@ -19,6 +19,9 @@ export class AdminListComponent implements OnInit {
      this.admins$ = this.userService.findAllAdmin();
   }
 
+  setTimeToMoment(date: string){
+    return date[2] + "/" + date[1] + "/" + date[0];
+    }  
 
 
 }
