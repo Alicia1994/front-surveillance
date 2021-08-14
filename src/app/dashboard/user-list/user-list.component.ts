@@ -18,9 +18,26 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
-    this.users$ = this.userService.findAllUsers();
-    console.log("okokok");
+    this.users$ = this.userService.findAllUsers().pipe(
+      map((users: Array<User>) => {
+        users.forEach((user:User)=> {
+          user.role = 'USER'
+        })
+        return users
+      })
+    );
+   
   }
+
+
+// TRANSFORMATION DE L'OBSERVABLE POUR MANIPULER LE CONTENU DU TABLEAU
+// this.posts$ = this.addPostService.findAll().pipe(
+//   map((posts:Array<Post>) => {
+//         posts.forEach((post:Post) => {
+//           post.createdOn = 'toto'
+//         })
+//     return posts;
+// }));
 
   deleteUser(id: number){
     this.userSub = this.userService.delete(id).subscribe(data =>{ 
