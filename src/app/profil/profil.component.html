@@ -20,6 +20,10 @@
     <p> Mon mot de passe : <span>{{user.password}}</span></p>
     <button class="update">Modifier</button>
 </div>
+
+<div class="info">
+    <p> Date de création du compte : <span>{{setTimeToMoment(user?.dateAccount)}}</span></p>
+</div>
 </div>
 
 <button class="delete-account">Supprimer mon compte</button>

@@ -21,12 +21,14 @@ export class ProfilComponent implements OnInit {
   constructor(private userService: UserService, private authService: AuthService,  private localStorageService : LocalStorageService,) { }
 
   ngOnInit(): void {
-
+    console.log();
     this.currentUserUsername = this.localStorageService.retrieve("username");
     this.user$ = this.userService.findUserByUsername(this.currentUserUsername);
-
-    
-
   }
+
+  setTimeToMoment(date: string){
+    console.log(date[1]);
+    return date[2] + "/" + date[1] + "/" + date[0];
+    }  
 
 }

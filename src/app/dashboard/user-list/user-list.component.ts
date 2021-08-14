@@ -19,14 +19,8 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
     this.users$ = this.userService.findAllUsers().pipe(
-      map((users: Array<User>) => {
-        users.forEach((user:User)=> {
-          user.role = 'USER'
-        })
-        return users
-      })
+      map(users=> users.filter(user => user.role == 'USER'))
     );
-   
   }
 
 
@@ -46,9 +40,12 @@ export class UserListComponent implements OnInit {
       this.users$ = this.users$.pipe(
         map(users=> users.filter(user => user.id != id))
       )
-      console.log("ok")});
-    
+      });
     //this.router.navigateByUrl('blog');
     //NOTE TROUVER UN MOYEN DE RAFRACHIR
   }
+
+  setTimeToMoment(date: string){
+    return date[2] + "/" + date[1] + "/" + date[0];
+    }  
 }

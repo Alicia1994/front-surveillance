@@ -18,12 +18,11 @@
                 <th>Mail</th>
                 <th>Pseudo</th>
                 <th>Rôle</th>
+                <th>Date</th>
                 <th>Action</th>
-                <!-- <th>Date de création</th> -->
         </thead>
     
         <tr *ngFor="let user of users">
-    <!-- (click)=addToAnotherTable(i) -->
             <td>
                 <span>{{user.id}}</span>
             </td>
@@ -39,17 +38,14 @@
             <td>
                 <span>{{user.role}}</span>
             </td>
+             <td>
+                <span>{{setTimeToMoment(user.dateAccount)}}</span>
+            </td>
+            
             <td>
                     <button>
                         <a class="bin" type="button" (click)="deleteUser(user.id)"> <i class="fas fa-trash"></i></a></button>
             </td>
-            <!-- <td>
-              <select>
-                 <option *ngFor="let mission of data.missions">
-                    {{mission}}
-                 </option>
-              </select>
-            </td> -->
         </tr>
     </table>
 

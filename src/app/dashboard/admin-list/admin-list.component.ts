@@ -13,7 +13,6 @@ export class AdminListComponent implements OnInit {
 
   admins$: Observable<Array<User>>;
 
-
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
