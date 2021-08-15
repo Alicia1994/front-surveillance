@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
 
     <div class=title-last-articles>
         <h1>Nos derniers articles </h1>
@@ -13,24 +13,83 @@
 
         <ng-template #block>
 
-    <div  class="list-articles"> 
+            <div class="list-articles"> -->
 
-        <!-- *ngIf="posts.length > 0"  -->
-        <!-- Ajouter un *ngIf posts.length = 1 ; width: 50% -->
-        <div *ngFor='let post of posts.slice(posts.length-3, posts.length)' class="container_list">
-            <div class="picture"></div>
-            <div class="content">
-                <div class="title">{{post.title}}</div>
-                <button class="read-article" routerLink="/post/{{post.id}}">
-                    <p class="read-article-text"> Lire l'article</p>
-                </button>
+<!-- *ngIf="posts.length > 0"  -->
+<!-- Ajouter un *ngIf posts.length = 1 ; width: 50% -->
+<!-- <div *ngFor='let post of posts.slice(posts.length-3, posts.length)' class="container_list">
+                    <div class="picture"></div>
+                    <div class="content">
+                        <div class="title">{{post.title}}</div>
+                        <button class="read-article" routerLink="/post/{{post.id}}">
+                            <p class="read-article-text"> Lire l'article</p>
+                        </button>
+                    </div>
+                </div>
+
             </div>
+        </ng-template>
+    </div>
+
+</div> -->
+
+
+
+
+
+
+
+<!-- /////////// -->
+
+<div class="container">
+
+
+    <div class=title-last-articles>
+        <h1>Nos derniers articles </h1>
+    </div>
+
+
+    <div *ngIf="posts$ | async as posts">
+        <!-- <div class="no-article" *ngIf="posts.length == 0; else block">
+
+            <p>Vous n'avez publié aucun article sur le blog !</p>
         </div>
 
+        <ng-template #block> -->
+
+
+<swiper div *ngFor='let post of posts'
+    [slidesPerView]="1"
+    [spaceBetween]="30"
+    [loop]="true"
+    [pagination]="{
+      clickable: true
+    }"
+    [navigation]="true"
+    class="mySwiper"
+  >
+
+
+
+    <ng-template swiperSlide>
+        
+        <div class="picture"></div>
+        <div class="content">
+            <div class="title">{{post.title}}</div>
+            <button class="read-article" routerLink="/post/{{post.id}}">
+                <p class="read-article-text"> Lire l'article</p>
+            </button>
+        </div>
+        
+        </ng-template>
+
+
+
+
+</swiper>
+
+
+<!-- </ng-template> -->
 </div>
-</ng-template>
-
-
-
 
 </div>

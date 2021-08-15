@@ -1,7 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { ViewEncapsulation, ViewChild } from "@angular/core";
+
+// import Swiper core and required modules
+import SwiperCore, { Pagination, Navigation } from "swiper/core";
+
+// install Swiper modules
+SwiperCore.use([Pagination, Navigation]);
+
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-swiper',
   template: `<swiper
   [slidesPerView]="1"
   [spaceBetween]="30"
@@ -22,9 +31,8 @@ import { Component } from '@angular/core';
   ><ng-template swiperSlide>Slide 8</ng-template
   ><ng-template swiperSlide>Slide 9</ng-template>
 </swiper>`,
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./swiper.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
-export class AppComponent {
-  title = 'Surveillance';
-}
+
+export class SwiperComponent {}

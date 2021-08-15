@@ -1,5 +1,9 @@
   import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import Swiper from 'swiper';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,9 +37,14 @@ import { UserListComponent } from './dashboard/user-list/user-list.component';
 import { AdminListComponent } from './dashboard/admin-list/admin-list.component';
 import { CommonModule } from '@angular/common';
 import { AddAdminComponent } from './dashboard/add-admin/add-admin.component';
+import { OwlModule } from 'ngx-owl-carousel';
+import { SwiperComponent } from './swiper/swiper.component';
+import { SwiperModule } from "swiper/angular";
+
 
 @NgModule({
   declarations: [
+    
     AppComponent,
     LayoutComponent,
     HeaderComponent,
@@ -58,7 +67,8 @@ import { AddAdminComponent } from './dashboard/add-admin/add-admin.component';
     EditorArticleComponent,
     UserListComponent,
     AdminListComponent,
-    AddAdminComponent
+    AddAdminComponent,
+    SwiperComponent,
   ],
   imports: [
     CommonModule,
@@ -69,8 +79,12 @@ import { AddAdminComponent } from './dashboard/add-admin/add-admin.component';
     RouterModule,
     NgxWebstorageModule.forRoot(),
     HttpClientModule,
-    EditorModule
-    
+    EditorModule,
+    IvyCarouselModule,
+    OwlModule,
+    BrowserAnimationsModule, 
+    NgbModule,
+    SwiperModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true}],
   bootstrap: [AppComponent]
