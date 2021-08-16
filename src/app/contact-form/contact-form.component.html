@@ -1,15 +1,84 @@
-<form>
+  <form action="https://formsubmit.co/aliciaderradji@live.fr" method="POST">
+
   
     <img src="https://cdn4.iconfinder.com/data/icons/basic-user-interface-elements/700/mail-letter-offer-256.png"
       alt="icon">
-  
-  
-
 
   <h1>Contacter l'association</h1>
-  <input type="text" placeholder="Nom" required>
-  <input type="text" placeholder="Mail" required>
-  <input type="text" placeholder="Sujet" required>
-  <textarea placeholder="Message" required></textarea>
-  <input type="submit" value="Envoyer">
-</form>
+
+<!-- name -->
+  <input type="text" placeholder="Nom*" name="name" class="input" [(ngModel)]="name" required
+  minlength="3" #nameInput="ngModel">
+
+  <div class="help is-error" *ngIf="nameInput.invalid && nameInput.dirty">
+   3 caractères au moins !
+  </div>
+
+
+  <!-- email -->
+  <input type="email" placeholder="Mail*" name="email" class="input" [(ngModel)]="email" required
+  email #emailInput="ngModel">
+  <input type="hidden" name="_autoresponse" value="Nous vous remercions de nous avoir contacté. Nos équipes vous répondrons dans les plus brefs délais">
+
+  <div class="help is-error" *ngIf="emailInput.invalid && emailInput.dirty && boolean == false">
+  Le mail doit être valide !
+  </div>
+
+
+  <!-- subject -->
+  <input type="textarea" name="subject" placeholder="Sujet" [(ngModel)]="subject" required #subjectInput="ngModel">
+
+  <div class="help is-error" *ngIf="subjectInput.invalid && subjectInput.dirty">
+    Le sujet est obligatoire !
+  </div>
+
+
+  <!-- message -->
+  <textarea  placeholder="Message" name="message" [(ngModel)]="message" required #messageInput="ngModel"></textarea>
+
+  <div class="help is-error" *ngIf="messageInput.invalid && messageInput.dirty">
+    Le message est obligatoire !
+  </div>
+
+
+  <button type="submit" value="Envoyer" (click)="onSubmit">Envoyer</button>
+
+
+<!-- </form>
+
+
+
+<form action="https://formsubmit.co/aliciaderradji@live.fr" method="POST">
+  <input type="text" name="name" required>
+  <input type="email" name="email" required>
+  <button type="submit" routerLinkActive="active" routerLink="/contact-success">Send</button>
+
+</form> -->
+<!-- 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://smtpjs.com/v3/smtp.js">
+</script>
+
+<script>
+
+function sendmail(){
+
+  var name = $('#name').val();
+  var name = $('#email').val();
+  var name = $('#subject').val();
+  var name = $('#message').val()
+
+  var Body = "Name " + name ;
+}
+Email.send({
+  Host : "smtp.live.fr",
+  Username : "aliciaderradji@live.fr",
+  Password : "password",
+  To : 'aliciaderradji@live.fr',
+  From : "aliciaderradji@live.fr",
+  Subject : "This is the subject",
+  Body : "And this is the body"
+}).then(
+message => alert(message)
+);</script> -->
