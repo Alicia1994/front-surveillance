@@ -75,3 +75,25 @@ a {
 }
 
 
+button{
+  background-color: white;
+  border: 10px solid;
+  border-image-slice: 1;
+  border-width: 3px;
+  border-image-source: linear-gradient(#FE58ED, #5890FE);
+  width: 250px;
+  align-self: center;
+
+}
+
+.btn-info{
+  margin-top: 10px;
+}
+
+.add-admin{
+  margin: 5px;
+  color: rgba(88, 144, 254, 1);
+  font-weight: 600;
+  
+}
+

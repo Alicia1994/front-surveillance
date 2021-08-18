@@ -21,18 +21,21 @@ import { LegalMentionsComponent } from './legal-mentions/legal-mentions.componen
 import { RouterModule } from '@angular/router';
 import { SignupSuccessComponent } from './auth/signup-success/signup-success.component';
 import { NgxWebstorageModule } from 'ngx-webstorage';
-import { AddPostComponent } from './add-post/add-post.component';
+import { AddPostComponent } from './dashboard/POST/add-post/add-post.component';
 //import { EditorModule } from '@tinymce/tinymce-angular';
 import { HttpClientInterceptor } from './http-client-interceptor';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { UpdatePostComponent } from './update-post/update-post.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfilComponent } from './profil/profil.component';
-import { EditorArticleComponent } from './dashboard/editor-article/editor-article.component';
-import { UserListComponent } from './dashboard/user-list/user-list.component';
-import { AdminListComponent } from './dashboard/admin-list/admin-list.component';
+import { EditorArticleComponent } from './dashboard/POST/editor-article/editor-article.component';
+import { UserListComponent } from './dashboard/USER/user-list/user-list.component';
+import { AdminListComponent } from './dashboard/USER/admin-list/admin-list.component';
 import { CommonModule } from '@angular/common';
-import { AddAdminComponent } from './dashboard/add-admin/add-admin.component';
+import { AddAdminComponent } from './dashboard/USER/add-admin/add-admin.component';
+import { ContactSuccessComponent } from './contact-form/contact-success/contact-success.component';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -53,12 +56,13 @@ import { AddAdminComponent } from './dashboard/add-admin/add-admin.component';
     SignupSuccessComponent,
     AddPostComponent,
     UpdatePostComponent,
-    DashboardComponent,
+    //DashboardComponent,
     ProfilComponent,
-    EditorArticleComponent,
-    UserListComponent,
-    AdminListComponent,
-    AddAdminComponent
+    //EditorArticleComponent,
+    //UserListComponent,
+    //AdminListComponent,
+    //AddAdminComponent,
+    ContactSuccessComponent
   ],
   imports: [
     CommonModule,
@@ -69,8 +73,9 @@ import { AddAdminComponent } from './dashboard/add-admin/add-admin.component';
     RouterModule,
     NgxWebstorageModule.forRoot(),
     HttpClientModule,
-    EditorModule
-    
+    EditorModule,
+    DashboardModule,
+    NgbModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true}],
   bootstrap: [AppComponent]

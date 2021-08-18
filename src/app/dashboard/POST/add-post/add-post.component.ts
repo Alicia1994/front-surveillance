@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AddPostService } from '../services/post.service';
-import { Post } from '../models/post-payload';
+import { AddPostService } from '../../../services/post.service';
+import { Post } from '../../../models/post-payload';
 
 @Component({
   selector: 'app-add-post',
@@ -43,7 +43,7 @@ export class AddPostComponent implements OnInit {
     this.post.content = this.addPostForm.get('body').value;
     this.post.title = this.addPostForm.get('title').value;
     this.sub = this.addpostService.create(this.post).subscribe(data => {
-      this.router.navigateByUrl('/blog');
+      this.router.navigateByUrl('/handle-post');
     }, error => {
       console.log('Failure Response');
     })

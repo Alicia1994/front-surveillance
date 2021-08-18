@@ -59,7 +59,13 @@
 }
 
 
-.delete-btn{
+.btn-info{
     text-align-last: center;
+    align-self: center;
+
 }
 
+.col-md-10{
+    display: flex;
+    flex-flow: column;
+}

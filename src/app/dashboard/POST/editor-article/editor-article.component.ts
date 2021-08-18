@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, pipe, Subscription } from 'rxjs';
+import * as moment from 'moment';
+import { Subscription, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Post } from 'src/app/models/post-payload';
 import { AddPostService } from 'src/app/services/post.service';
-import * as moment from "moment";
 
-moment.locale('fr');
 @Component({
-  selector: 'app-article-list',
-  templateUrl: './article-list.component.html',
-  styleUrls: ['./article-list.component.scss']
+  selector: 'app-editor-article',
+  templateUrl: './editor-article.component.html',
+  styleUrls: ['./editor-article.component.scss']
 })
-export class ArticleListComponent implements OnInit {
+export class EditorArticleComponent implements OnInit {
 
   postSub : Subscription;
   dataPosts: Post[];
@@ -52,22 +51,14 @@ export class ArticleListComponent implements OnInit {
     //console.log(new Date('2021-08-13 13:43').getHours())
   }
 
-  // deletePost(id: number){
-  //   this.postSub = this.addPostService.delete(id).subscribe(data =>{ 
+  deletePost(id: number){
+    this.postSub = this.addPostService.delete(id).subscribe(data =>{ 
     
-  //     console.log("ok")});
-  //     this.posts$ = this.posts$.pipe(
-  //       map(posts => 
-  //         posts.filter(post => post.id != id))
-  //     )
-  // }
-}
+      console.log("ok")});
+      this.posts$ = this.posts$.pipe(
+        map(posts => 
+          posts.filter(post => post.id != id))
+      )
+  }
 
-// TRANSFORMATION DE L'OBSERVABLE POUR MANIPULER LE CONTENU DU TABLEAU
-// this.posts$ = this.addPostService.findAll().pipe(
-//   map((posts:Array<Post>) => {
-//         posts.forEach((post:Post) => {
-//           post.createdOn = 'toto'
-//         })
-//     return posts;
-// }));
+}

@@ -1,0 +1,33 @@
+<div *ngIf="posts$ | async as posts">
+    <div class="no-article" *ngIf="posts.length == 0; else block">
+
+        <p>Vous n'avez publié aucun article sur le blog !</p>
+    </div>
+
+    <ng-template #block>
+
+        <div>
+            <div class="article">
+                <div class="picture"></div>
+                <div class="content">
+                    <div class="title"><a routerLink="/post/{{post.id}}">{{post.title}}</a></div>
+                    <div class="author"><i class="fas fa-user"></i>
+                        <p>{{post.username}}</p>
+                    </div>
+                    <div class="date"><i class="far fa-calendar-alt"></i>
+                        <p>{{setTimeToMoment(post.createdOn)}}</p>
+                    </div>
+                </div>
+                <!-- <p class="post-content" [innerHTML]="post.content" ></p> -->
+                <button> <a class="read-article" type="button" routerLink="/post/{{post.id}}">Visualiser</a></button>
+                <button> <a class="read-article" type="button" (click)="deletePost(post.id)">Supprimer</a></button>
+                <!-- <button> <a class="read-article" type="button" (click)="updatePost(post.id)">Modifier</a></button> -->
+                <button> <a class="read-article" type="button"
+                        routerLink="/update-post/{{post.id}}">Modifier</a></button>
+
+            </div>
+        </div>
+
+    </ng-template>
+
+</div>

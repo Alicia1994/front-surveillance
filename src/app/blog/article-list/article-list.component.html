@@ -28,24 +28,25 @@
         </div>
 
         <ng-template #block>
-   
-                <div *ngFor="let post of posts">
-                    <div class="article">
+
+            <div *ngFor="let post of posts">
+                <div class="article">
                     <div class="picture"></div>
                     <div class="content">
                         <div class="title"><a routerLink="/post/{{post.id}}">{{post?.title}}</a></div>
                         <div class="author"><i class="fas fa-user"></i>
-                            <p> Auteur : {{post?.username}}</p>
-                        <div class="date"><i class="fas fa-user"></i>
-                            <!-- <p> Publié le {{post?.createdOn}} </p>  -->
-                            <p>{{setTimeToMoment(post?.createdOn)}}</p>
-                        </div>
-                        </div>
+                            <p>{{post?.username}}</p></div>
+                            <div class="date"><i class="far fa-calendar-alt"></i>
+                                <!-- <p> Publié le {{post?.createdOn}} </p>  -->
+                                <p>{{setTimeToMoment(post?.createdOn)}}</p>
+                            </div>
+                        
                         <!-- <p class="post-content" [innerHTML]="post.content" ></p> -->
-                        <button> <a class="read-article" type="button" routerLink="/post/{{post.id}}">Lire l'article</a></button>
-                        <button> <a class="read-article" type="button" (click)="deletePost(post.id)">Supprimer</a></button>
+                        <button> <a class="read-article" type="button" routerLink="/post/{{post.id}}">Lire
+                                l'article</a></button>
+                        <!-- <button> <a class="read-article" type="button" (click)="deletePost(post.id)">Supprimer</a></button> -->
                         <!-- <button> <a class="read-article" type="button" (click)="updatePost(post.id)">Modifier</a></button> -->
-                        <button> <a class="read-article" type="button" routerLink="/update-post/{{post.id}}">Modifier</a></button>
+                        <!-- <button> <a class="read-article" type="button" routerLink="/update-post/{{post.id}}">Modifier</a></button> -->
 
                     </div>
                 </div>

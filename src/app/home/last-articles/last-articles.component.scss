@@ -44,7 +44,6 @@ h1{
 button{
     background: white;
     text-decoration: inherit;
-    margin-top: 15px;
 }
 
 .content{
@@ -61,8 +60,8 @@ button{
 }
 
 .container_list{
-    width: 80%;
-    height: 300px;
+    width: 90%;
+    height: 350px;
     background: rgba(241, 184, 255, 1);
     margin: 30px;
     padding: 0px;
@@ -98,17 +97,21 @@ button{
     }
 
     .title{
-        font-size: 1rem;
+        font-size: 0.75rem;
     }
 
     .read-article-text{
         font-size: 0.8rem;
     }
 
+    #menu-mobile{
+        margin-right: 10px;
+    }
+
 }
 
 //******** MEDIA QUERIES min 960px ******* 
-@media (min-width: 960px){
+@media (min-width: 1000px){
 
     h1{
         font-size: 1.5rem;
@@ -118,7 +121,7 @@ button{
   } 
 
   .title{
-    font-size: 1.2rem;
+    font-size: 1rem;
 }
 
 .read-article-text{

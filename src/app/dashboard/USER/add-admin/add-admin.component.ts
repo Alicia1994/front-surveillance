@@ -39,7 +39,7 @@ export class AddAdminComponent implements OnInit {
 
     this.authService.signupAdmin(this.signupPayload).subscribe(data=>{
       console.log('register success');
-      this.router.navigateByUrl("dashboard");
+      this.router.navigateByUrl("handle-user");
     }, error => {
       console.log("register failed")
     }

@@ -12,9 +12,12 @@
                 </span>
           <hr>
           <p class="article-content" [innerHTML]="post?.content"></p>
+          <hr>
 
-          <button class="btn btn-outline-danger delete-btn" type="button" (click)="deletePost()" routerLink="/blog">Supprimer</button>
-          <button class="btn btn-outline-danger delete-btn" type="button" (click)="updatePost()">Modifier</button>
+          <button class="btn btn-info" type="button" routerLink="/blog">Retour</button>
+
+          <!-- <button class="btn btn-outline-danger delete-btn" type="button" (click)="deletePost()" routerLink="/blog">Supprimer</button>
+          <button class="btn btn-outline-danger delete-btn" type="button" (click)="updatePost()">Modifier</button> -->
 
           
         </div>

@@ -1,6 +1,7 @@
 import { ConditionalExpr } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import * as moment from 'moment';
 import { Observable } from 'rxjs';
 import { Post } from 'src/app/models/post-payload';
 import { AddPostService } from 'src/app/services/post.service';
@@ -31,6 +32,9 @@ export class ArticleComponent implements OnInit {
       
     })
 
+   
+
+
 
     // this.postService.deletePost(this.permaLink).subscribe(data => {
     //   console.log(data);
@@ -38,17 +42,17 @@ export class ArticleComponent implements OnInit {
   
   }
 
-  public deletePost(): void{
-    if(confirm('Voulez-vous réellement supprimer cet article ?')){
-      this.postService.delete(this.idPost).subscribe(
-        data => {
+  // public deletePost(): void{
+  //   if(confirm('Voulez-vous réellement supprimer cet article ?')){
+  //     this.postService.delete(this.idPost).subscribe(
+  //       data => {
           
-          // CODE JS POUR REFRESH
-          this.router.navigateByUrl('/blog');
-          console.log(data);
-        });
-    }
-  }
+  //         // CODE JS POUR REFRESH
+  //         this.router.navigateByUrl('/blog');
+  //         console.log(data);
+  //       });
+  //   }
+  // }
 
   // this.postSub = this.addPostService.delete(id).subscribe(data =>{ 
       
@@ -57,9 +61,9 @@ export class ArticleComponent implements OnInit {
   //     map(posts => posts.filter(post => post.id != id))
   //   )
 
-  public updatePost(){
-    this.router.navigateByUrl('update-post/' + this.idPost);
-  }
+  // public updatePost(){
+  //   this.router.navigateByUrl('update-post/' + this.idPost);
+  // }
 
  
 

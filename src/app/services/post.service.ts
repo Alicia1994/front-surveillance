@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Post } from '../models/post-payload';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,10 @@ export class AddPostService {
 
     findById(idPost: Number):Observable<Post>{
     return this.httpClient.get<Post>(this.baseUrl + '/get/' + idPost);
+  }
+
+  findPostByUsername(username: string) {
+    return this.httpClient.get<Array<User>>(`${this.baseUrl}/name/${username}`)
   }
 
   update(post: Post){

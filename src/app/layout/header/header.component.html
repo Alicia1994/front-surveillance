@@ -1,6 +1,6 @@
 <nav class="navbar-responsive navbar navbar-expand-lg navbar-light">
   <div class="container-fluid whitebg">
-    <img src="../../../assets/logoAlicia6.png" alt="" [routerLink]="['']" routerLinkActive="router-link-active">
+    <img src="../../../assets/logoAlicia6.png" alt="" [routerLink]="['home']" routerLinkActive="router-link-active">
     <button id="menu-mobile">
       <span></span>
       <span></span>
@@ -28,7 +28,7 @@
 <nav class="navbar-desktop first-nav navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand" href="#">
-      <img class="logo" src="../../../assets/logoAlicia6.png" alt="Logo Surveillance">
+      <img class="logo" src="../../../assets/logoAlicia6.png" alt="Logo Surveillance" [routerLink]="['home']" routerLinkActive="router-link-active">
     </a>
     <div class="buttons-desktop">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -42,7 +42,7 @@
           <a class="nav-link" routerLinkActive="active" routerLink="connexion">Connexion</a>
         </li>
         <li class="nav-item" *ngIf="authService.isAuthenticated()">
-          <a class="nav-link" routerLinkActive="active" routerLink="add-post">+ post</a>
+          <a class="nav-link" routerLinkActive="active" routerLink="admin">Dashboard</a>
         </li>
         <li class="nav-item" *ngIf="authService.isAuthenticated()">
           <a class="nav-link" (click)="logout()" routerLinkActive="active" routerLink="connexion">Déconnexion</a>
