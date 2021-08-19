@@ -1,7 +1,7 @@
 <div class="container">
     <div *ngIf="admins$ | async as admins">
 
-        <h1>Liste d'administrateurs</h1>
+       <div class="seven"> <h1>Liste d'administrateurs</h1></div>
 
         <div class="no-article" *ngIf="admins.length == 0; else block">
 
@@ -10,30 +10,35 @@
         </div>
 
         <ng-template #block>
+            <section class="main">
 
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Mail</th>
-                        <th>Pseudo</th>
-                        <th>Rôle</th>
-                        <th>Date</th>
-                        <th>Action</th>
-                        <!-- <th>Date de création</th> -->
-                </thead>
+                <ul class="table">
+                    <li class="title">
+                        <div>Pseudo</div>
+                        <div>Mail</div>
+                    
+                        <!-- <div>Rôle</div> -->
+                        <div>Date</div>
+                        <div>Action</div>
+                    </li>
 
-                <tr *ngFor="let admin of admins">
-                    <!-- (click)=addToAnotherTable(i) -->
-                    <td>
-                        <span>{{admin.id}}</span>
-                    </td>
-                    <td>
+
+
+
+                    <li *ngFor="let admin of admins">
+
+                        <div>{{admin.username}}</div>
+                        <div>{{admin.email}}</div>
+
+                        <!-- <div>{{admin.role}}</div> -->
+                        <div>{{setTimeToMoment(admin.dateAccount)}}</div>
+                        <div> <a class="bin" (click)="deleteAdmin(admin.id)"> <i class="fas fa-trash"></i></a></div>
+
+
+                        <!-- <td>
                         <span>{{admin.email}}</span>
                     </td>
-                    <!-- <td>
-                <span>{{user.password}}</span>
-            </td> -->
+                    
                     <td>
                         <span>{{admin.username}}</span>
                     </td>
@@ -44,23 +49,19 @@
                         <span>{{setTimeToMoment(admin.dateAccount)}}</span>
                     </td>
                     <td>
-                        <a class="bin" type="button" (click)="deleteAdmin(admin.id)"> <i class="fas fa-trash"></i></a>
-                    </td>
-                    <!-- <td>
-              <select>
-                 <option *ngFor="let mission of data.missions">
-                    {{mission}}
-                 </option>
-              </select>
-            </td> -->
-                </tr>
-            </table>
+                        <a class="bin" (click)="deleteAdmin(admin.id)"> <i class="fas fa-trash"></i></a>
+                    </td> -->
+                    </li>
+
+                </ul>
+            </section>
 
         </ng-template>
+
     </div>
-
-<button>
-    <a routerLink='/handle-user/add-admin' routerLinkActive="router-link-active" class="add-admin">Ajouter un admin</a>
-</button>
-
+        <button routerLink='/handle-user/add-admin' routerLinkActive="router-link-active" type="button"
+            class="btn btn-border-1">
+            Ajouter un admin
+        </button>
+   
 </div>

@@ -8,7 +8,6 @@ import { AdminListComponent } from './USER/admin-list/admin-list.component';
 import { UserListComponent } from './USER/user-list/user-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HomeAdminComponent } from './home-admin/home-admin.component';
 import { HandleUserComponent } from './USER/handle-user/handle-user.component';
 import { HandlePostComponent } from './POST/handle-post/handle-post.component';
 import { MyArticlesComponent } from './POST/my-articles/my-articles.component';
@@ -22,7 +21,6 @@ import { MyArticlesComponent } from './POST/my-articles/my-articles.component';
     EditorArticleComponent,
     AdminListComponent,
     UserListComponent,
-    HomeAdminComponent,
     HandleUserComponent,
     HandlePostComponent,
     MyArticlesComponent,

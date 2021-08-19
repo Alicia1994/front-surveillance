@@ -9,13 +9,12 @@ import { HandleUserComponent } from './USER/handle-user/handle-user.component';
 import { HandlePostComponent } from './POST/handle-post/handle-post.component';
 import { MyArticlesComponent } from './POST/my-articles/my-articles.component';
 import { AddPostComponent } from './POST/add-post/add-post.component';
+import { UpdatePostComponent } from './POST/update-post/update-post.component';
 
 
 const routes: Routes = [
 
     {path: '', component: DashboardComponent, children : [ 
-    //{path:"home-admin", component: HomeAdminComponent},
-
     {path:"handle-user/add-admin", component: AddAdminComponent},
     {path:"handle-user/user-list", component: UserListComponent},
     {path:"handle-user/admin-list", component: AdminListComponent},
@@ -24,11 +23,10 @@ const routes: Routes = [
     {path: "handle-post", component: HandlePostComponent},
     {path:"handle-post/my-articles", component : MyArticlesComponent},
     { path : "handle-post/add-post", component: AddPostComponent},
+    {path: 'handle-post/update-post/:id', component: UpdatePostComponent},
+
 
 {path:'', redirectTo: "/admin", pathMatch:'full'}
-
-
-
   ]}
 ];
 

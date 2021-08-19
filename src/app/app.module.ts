@@ -25,7 +25,7 @@ import { AddPostComponent } from './dashboard/POST/add-post/add-post.component';
 //import { EditorModule } from '@tinymce/tinymce-angular';
 import { HttpClientInterceptor } from './http-client-interceptor';
 import { EditorModule } from '@tinymce/tinymce-angular';
-import { UpdatePostComponent } from './update-post/update-post.component';
+import { UpdatePostComponent } from './dashboard/POST/update-post/update-post.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfilComponent } from './profil/profil.component';
 import { EditorArticleComponent } from './dashboard/POST/editor-article/editor-article.component';
@@ -36,6 +36,8 @@ import { AddAdminComponent } from './dashboard/USER/add-admin/add-admin.componen
 import { ContactSuccessComponent } from './contact-form/contact-success/contact-success.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AlertsComponent } from './alerts/alerts.component';
+
 
 @NgModule({
   declarations: [
@@ -62,7 +64,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     //UserListComponent,
     //AdminListComponent,
     //AddAdminComponent,
-    ContactSuccessComponent
+    ContactSuccessComponent,
+    AlertsComponent
   ],
   imports: [
     CommonModule,

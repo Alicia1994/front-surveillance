@@ -1,4 +1,22 @@
-  <form action="https://formsubmit.co/aliciaderradji@live.fr" method="POST">
+
+     <form id="contact-form" (submit)="sendEmail($event)">
+         <input type="hidden" name="contact_number">
+         <label>Name</label>
+         <input type="text" name="user_name">
+         <label>Email</label>
+         <input type="email" name="user_email">
+         <label>Message</label>
+         <textarea name="message"></textarea>
+         <input type="submit" value="Send">
+     </form>
+
+
+
+ 
+ 
+ 
+ 
+ <!-- <form action="https://formsubmit.co/aliciaderradji@live.fr" method="POST">
 
   
     <img src="https://cdn4.iconfinder.com/data/icons/basic-user-interface-elements/700/mail-letter-offer-256.png"
@@ -6,7 +24,7 @@
 
   <h1>Contacter l'association</h1>
 
-<!-- name -->
+
   <input type="text" placeholder="Nom*" name="name" class="input" [(ngModel)]="name" required
   minlength="3" #nameInput="ngModel">
 
@@ -15,7 +33,6 @@
   </div>
 
 
-  <!-- email -->
   <input type="email" placeholder="Mail*" name="email" class="input" [(ngModel)]="email" required
   email #emailInput="ngModel">
   <input type="hidden" name="_autoresponse" value="Nous vous remercions de nous avoir contacté. Nos équipes vous répondrons dans les plus brefs délais">
@@ -25,7 +42,7 @@
   </div>
 
 
-  <!-- subject -->
+
   <input type="textarea" name="subject" placeholder="Sujet" [(ngModel)]="subject" required #subjectInput="ngModel">
 
   <div class="help is-error" *ngIf="subjectInput.invalid && subjectInput.dirty">
@@ -33,7 +50,6 @@
   </div>
 
 
-  <!-- message -->
   <textarea  placeholder="Message" name="message" [(ngModel)]="message" required #messageInput="ngModel"></textarea>
 
   <div class="help is-error" *ngIf="messageInput.invalid && messageInput.dirty">
@@ -41,8 +57,8 @@
   </div>
 
 
-  <button type="submit" value="Envoyer" (click)="onSubmit">Envoyer</button>
-
+  <button type="submit" value="Envoyer" (click)="sendEmail($event)">Envoyer</button>
+ -->
 
 <!-- </form>
 

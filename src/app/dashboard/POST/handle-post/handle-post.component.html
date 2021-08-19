@@ -3,12 +3,14 @@
 
    <ul class="tab-group">
       <li class="tab" routerLinkActive ="active" ><a (click)="isTrue()">LISTE DES ARTICLES</a></li>
-      <li class="tab" routerLinkActive ="active" ><a (click)="isFalse()">LISTE DE MES ARTICLES</a></li>
+      <li class="tab" routerLinkActive ="active" ><a (click)="isFalse()">LISTE DE MES ARTICLES</a></li>   
+   
+      <button routerLink='/handle-post/add-post' routerLinkActive="router-link-active" type="button"
+      class="btn btn-border-1">
+      Ajouter un post
+  </button>
 
-      <button class="btn-info add-post"><i class="fas fa-plus"></i><a routerLink="/handle-post/add-post">Ajouter un post</a></button>
-   
-   
-      
+
       <div *ngIf="condition;else elseBlock"><app-my-articles></app-my-articles></div>
       <ng-template #elseBlock>
           <app-editor-article></app-editor-article>

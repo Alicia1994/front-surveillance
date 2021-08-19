@@ -1,25 +1,7 @@
-<!-- <div class="container">
-
-    <div class="title-dash">
-        <h1>LISTES </h1>
-    </div>
-
-<ul class="tab-group">
-    <li class="tab" routerLinkActive ="active" ><a routerLink="/admin/handle-user/admin-list">LISTE ADMIN</a></li>
-    <li class="tab" routerLinkActive ="active" ><a routerLink="/admin/handle-user/user-list">LISTE USER</a></li>
-</ul>
-
-<router-outlet></router-outlet>
-
-</div>
- -->
-
-
 <div class="container">
 <ul class="tab-group">
     <li class="tab" routerLinkActive ="active" [routerLinkActiveOptions]="{exact: true}"><a (click)="isTrue()">ADMIN</a></li>
     <li class="tab" routerLinkActive ="active" [routerLinkActiveOptions]="{exact: true}"><a (click)="isFalse()">USER</a></li>
-    
     <div *ngIf="condition;else elseBlock"><app-user-list></app-user-list></div>
     <ng-template #elseBlock>
         <app-admin-list></app-admin-list>
@@ -27,3 +9,15 @@
 </ul>
 <router-outlet></router-outlet> 
 </div>
+
+<!-- <div class="container">
+    <div class="title-dash">
+        <h1>LISTES </h1>
+    </div>
+<ul class="tab-group">
+    <li class="tab" routerLinkActive ="active" ><a routerLink="/admin/handle-user/admin-list">LISTE ADMIN</a></li>
+    <li class="tab" routerLinkActive ="active" ><a routerLink="/admin/handle-user/user-list">LISTE USER</a></li>
+</ul>
+<router-outlet></router-outlet>
+</div>
+ -->

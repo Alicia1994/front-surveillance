@@ -1,4 +1,8 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import emailjs, {EmailJSResponseStatus, init } from 'emailjs-com';
+
 
 @Component({
   selector: 'app-contact-form',
@@ -7,26 +11,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactFormComponent implements OnInit {
 
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-  boolean;
+ 
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.boolean == true;
+    init("user_GvHXfuTbEi3TsRSIT0Wa6");
   }
 
-  processForm() {
-    const allInfo = `My name is ${this.name}. My email is ${this.email}. My subject is ${this.message}. My message is ${this.message}`;
-    alert(allInfo); 
+  public sendEmail(e: Event): void {
+    e.preventDefault();
+    emailjs
+      .sendForm(
+        'service_jjma858',
+        'template_ugwd852',
+        e.target as HTMLFormElement,
+        'user_GvHXfuTbEi3TsRSIT0Wa6'
+      )
+      .then(
+        (result: EmailJSResponseStatus) => {
+          //console.log(result.text);
+          this.router.navigate(['/contact-success']); 
+
+        },
+        (error) => {
+          //console.log(error.text);
+        }
+      );
   }
 
-  onSubmit(){
-    this.boolean == false;
 
-  }
+ 
 
 }

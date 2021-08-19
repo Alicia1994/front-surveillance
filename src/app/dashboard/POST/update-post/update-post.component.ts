@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AddPostService } from '../services/post.service';
+import { AddPostService } from '../../../services/post.service';
 
 @Component({
   selector: 'app-update-post',
@@ -69,7 +69,7 @@ console.log(this.updatePostForm);
     this.addPostService.update(formValues).subscribe(
       resp => {
         console.log("modification effectuée")
-       this.router.navigateByUrl("/blog")
+       this.router.navigateByUrl("/handle-post")
       }
     )
   }

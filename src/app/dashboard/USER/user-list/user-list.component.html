@@ -1,56 +1,61 @@
+
+
 <div class="container">
     <div *ngIf="users$ | async as users">
 
-    <h1> Liste d'utilisateurs</h1>
+        <div class="seven"><h1>Liste d'utilisateurs</h1></div>
 
-    <div class="no-article" *ngIf="users.length == 0; else block">
+        <div class="no-article" *ngIf="users.length == 0; else block">
 
-        <p>Aucun administrateur enregistré !</p>
+            <p>Aucun utilisateur enregistré !</p>
 
-    </div>
+        </div>
 
-    <ng-template #block>
+        <ng-template #block>
+            <section class="main">
 
-    <table class="table"  >
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Mail</th>
-                <th>Pseudo</th>
-                <th>Rôle</th>
-                <th>Date</th>
-                <th>Action</th>
-        </thead>
-    
-        <tr *ngFor="let user of users">
-            <td>
-                <span>{{user.id}}</span>
-            </td>
-            <td>
-                <span>{{user.email}}</span>
-            </td>
-            <!-- <td>
-                <span>{{user.password}}</span>
-            </td> -->
-            <td>
-                <span>{{user.username}}</span>
-            </td>
-            <td>
-                <span>{{user.role}}</span>
-            </td>
-             <td>
-                <span>{{setTimeToMoment(user.dateAccount)}}</span>
-            </td>
-            
-            <td>
-                 <a class="bin" type="button" (click)="deleteUser(user.id)"> <i class="fas fa-trash"></i></a>
-            </td>
-        </tr>
-    </table>
+                <ul class="table">
+                    <li class="title">
+                        <div>Pseudo</div>
+                        <div>Mail</div>
+                        <!-- <div>Rôle</div> -->
+                        <div>Date</div>
+                        <div>Action</div>
+                    </li>
 
-</ng-template>
+                    <li *ngFor="let user of users">
+
+                        <div>{{user.username}}</div>
+                        <div>{{user.email}}</div>
+
+                        <!-- <div>{{admin.role}}</div> -->
+                        <div>{{setTimeToMoment(user.dateAccount)}}</div>
+                        <div>   <a class="bin" type="button" (click)="deleteUser(user.id)"> <i class="fas fa-trash"></i></a></div>
+
+
+                        <!-- <td>
+                        <span>{{admin.email}}</span>
+                    </td>
+                    
+                    <td>
+                        <span>{{admin.username}}</span>
+                    </td>
+                    <td>
+                        <span>{{admin.role}}</span>
+                    </td>
+                    <td>
+                        <span>{{setTimeToMoment(admin.dateAccount)}}</span>
+                    </td>
+                    <td>
+                        <a class="bin" (click)="deleteAdmin(admin.id)"> <i class="fas fa-trash"></i></a>
+                    </td> -->
+                    </li>
+
+                </ul>
+            </section>
+
+        </ng-template>
+
+   
+   
 </div>
-
-</div>
-
-

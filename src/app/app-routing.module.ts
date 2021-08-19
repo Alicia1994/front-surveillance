@@ -11,7 +11,6 @@ import { OhFourComponent } from './oh-four/oh-four.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SignupSuccessComponent } from './auth/signup-success/signup-success.component';
 import { AuthGuard } from './auth.guard';
-import { UpdatePostComponent } from './update-post/update-post.component';
 import { ProfilComponent } from './profil/profil.component';
 import { ContactSuccessComponent } from './contact-form/contact-success/contact-success.component';
 
@@ -28,12 +27,12 @@ const routes: Routes = [
     {path: 'contact-success', component: ContactSuccessComponent},
     {path:'article', component: ArticleComponent},
     {path: 'post/:id', component: ArticleComponent},
-    {path: 'blog', component: BlogComponent}
+    {path: 'blog', component: BlogComponent},
+    {path: 'contact-success', component: ContactSuccessComponent}
   ]},
 
     {path: '', canActivate: [AuthGuard], component: LayoutComponent, children : [ 
     { path: '', redirectTo: 'home', pathMatch: 'full'},
-    {path: 'update-post/:id', component: UpdatePostComponent},
     {path: 'profil', component: ProfilComponent},
     { path: 'admin',
     loadChildren: () => import ('./dashboard/dashboard.module').then(m => m.DashboardModule)
@@ -48,6 +47,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
