@@ -23,28 +23,40 @@
 
         <ng-template #block>
 
-            <div *ngFor="let post of posts">
-                <div class="article">
-                    <div class="picture"></div>
-                    <div class="content">
-                        <div class="title"><a routerLink="/post/{{post.id}}">{{post?.title}}</a></div>
-                        <div class="author"><i class="fas fa-user"></i>
-                            <p>{{post?.username}}</p>
-                        </div>
-                        <div class="date"><i class="far fa-calendar-alt"></i>
-                            <p>{{setTimeToMoment(post?.createdOn)}}</p>
-                        </div>
-                    </div>
-                    <!-- <p class="post-content" [innerHTML]="post.content" ></p> -->
-                    <button> <a class="read-article" type="button"
+           
+                    <!-- <button> <a class="read-article" type="button"
                             routerLink="/post/{{post.id}}">Visualiser</a></button>
                     <button> <a class="read-article" type="button" (click)="deletePost(post.id)">Supprimer</a></button>
-                    <!-- <button> <a class="read-article" type="button" (click)="updatePost(post.id)">Modifier</a></button> -->
-                    <button> <a class="read-article" type="button"
-                            routerLink="/handle-post/update-post/{{post.id}}">Modifier</a></button>                        
-                </div>
-            </div>
+                    <button> <a class="read-article" type="button" (click)="updatePost(post.id)">Modifier</a></button> -->
+                    <!-- <button> <a class="read-article" type="button"
+                            routerLink="/handle-post/update-post/{{post.id}}">Modifier</a></button>                         -->
+                
 
+
+
+                <div class="grid-row">
+                  <div class="grid-item" *ngFor="let post of posts">
+                    <div class="grid-item-wrapper">
+                      <div class="grid-item-container">
+                    <div class="image"></div>
+                        <div class="grid-item-content">
+                          <span class="item-title">{{post?.title}}</span>
+                          <span class="item-category">Catégorie</span>
+                          <span class="item-excerpt"><i class="fas fa-user"></i>
+                            {{post?.username}}, <i class="far fa-calendar-alt"></i>
+                            {{setTimeToMoment(post?.createdOn)}} </span>
+                            <div class="buttons">
+                          <button class="read-article" routerLink="/post/{{post.id}}">Visualiser<i class="fas fa-long-arrow-alt-right"></i></button>
+                          <button class="read-article"  routerLink="/admin/handle-post/update-post/{{post.id}}">Modifier <i class="fas fa-long-arrow-alt-right"></i></button>
+                          <button class="read-article" (click)="deletePost(post.id)">Supprimer<i class="fas fa-long-arrow-alt-right"></i></button>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>                  
+                </div>
+
+            
             
 
 
