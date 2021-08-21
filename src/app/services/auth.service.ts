@@ -55,16 +55,17 @@ export class AuthService {
       this.router.navigate(['/connexion']);
     }
 
-     // getUserToken(){
-    //   const token = this.localStorageService.retrieve("authenticationToken");
-    //   const decode = this.jwtHelper.decodeToken(token);
-    //   if (decode !== null){
-    //     if (!this.jwtHelper.isTokenExpired(token)) {
-    //       return {...decode, token};
-    //     } else {
-    //       localStorage.removeItem('authenticationToken');
-    //     }
-    //   }
-    //   return null;
-    // }
+     getUserToken(){
+      const token = this.localStorageService.retrieve("authenticationToken");
+      const decode = this.jwtHelper.decodeToken(token);
+      if (decode !== null){
+        if (!this.jwtHelper.isTokenExpired(token)) {
+          return {...decode, token};
+        } else {
+          localStorage.removeItem('authenticationToken');
+        }
+      }
+      return null;
+    }
+
 }

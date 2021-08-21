@@ -13,41 +13,39 @@ import { SignupSuccessComponent } from './auth/signup-success/signup-success.com
 import { AuthGuard } from './auth.guard';
 import { ProfilComponent } from './profil/profil.component';
 import { ContactSuccessComponent } from './contact-form/contact-success/contact-success.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 const routes: Routes = [
 
-  {path: '', component: LayoutComponent, children : [ 
-    { path: '', redirectTo: 'home', pathMatch: 'full'},
-    { path: 'home', component: HomeComponent},
-    {path:'connexion', component: LoginComponent},
-    {path: 'signup', component: SignupComponent},
-    {path:'signup-success', component: SignupSuccessComponent},
-    {path: 'legal-mentions', component: LegalMentionsComponent},
-    {path: 'contact', component: ContactFormComponent},
-    {path: 'contact-success', component: ContactSuccessComponent},
-    {path:'article', component: ArticleComponent},
-    {path: 'post/:id', component: ArticleComponent},
-    {path: 'blog', component: BlogComponent},
-    {path: 'contact-success', component: ContactSuccessComponent}
-  ]},
-
-    {path: '', canActivate: [AuthGuard], component: LayoutComponent, children : [ 
-    { path: '', redirectTo: 'home', pathMatch: 'full'},
-    {path: 'profil', component: ProfilComponent},
-    { path: 'admin',
-    loadChildren: () => import ('./dashboard/dashboard.module').then(m => m.DashboardModule)
+  {
+    path: '', component: LayoutComponent, children: [
+     
+      { path: 'home', component: HomeComponent },
+      { path: 'connexion', component: LoginComponent },
+      { path: 'signup', component: SignupComponent },
+      { path: 'signup-success', component: SignupSuccessComponent },
+      { path: 'legal-mentions', component: LegalMentionsComponent },
+      { path: 'contact', component: ContactFormComponent },
+      { path: 'contact-success', component: ContactSuccessComponent },
+      { path: 'article', component: ArticleComponent },
+      { path: 'post/:id', component: ArticleComponent },
+      { path: 'blog', component: BlogComponent },
+      { path: 'calendar', component: CalendarComponent },
+     
+      { path: 'profil', canActivate: [AuthGuard], component: ProfilComponent },
+      {
+        path: 'admin',
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+      //{ path: '', redirectTo: '/home', pathMatch: 'full' },
+      { path: '**', component: OhFourComponent },
+      { path: '', redirectTo: '/not-found', pathMatch: 'full' },
+    ]
   },
-
-    // { path : 'not-found', component: OhFourComponent},
-    // { path: '**', redirectTo: '/not-found'}
-
-
-
-  ]},
 ];
 
 @NgModule({
-  
+
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

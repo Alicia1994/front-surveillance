@@ -5,6 +5,7 @@ import { Subscription, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Post } from 'src/app/models/post-payload';
 import { AddPostService } from 'src/app/services/post.service';
+import { AdminService } from '../../service/admin.service';
 
 @Component({
   selector: 'app-editor-article',
@@ -20,7 +21,7 @@ export class EditorArticleComponent implements OnInit {
   post: Post;
   posts$: Observable<Array<Post>>;
   
-  constructor(private addPostService: AddPostService, private router: Router) { }
+  constructor(private addPostService: AddPostService, private router: Router, private adminService: AdminService) { }
 
   ngOnInit() {
     //this.posts$ = this.addPostService.findAll();
@@ -52,7 +53,7 @@ export class EditorArticleComponent implements OnInit {
   }
 
   deletePost(id: number){
-    this.postSub = this.addPostService.delete(id).subscribe(data =>{ 
+    this.postSub = this.adminService.delete(id).subscribe(data =>{ 
     
       console.log("ok")});
       this.posts$ = this.posts$.pipe(

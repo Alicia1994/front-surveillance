@@ -23,20 +23,21 @@ import { SignupSuccessComponent } from './auth/signup-success/signup-success.com
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { AddPostComponent } from './dashboard/POST/add-post/add-post.component';
 //import { EditorModule } from '@tinymce/tinymce-angular';
-import { HttpClientInterceptor } from './http-client-interceptor';
-import { EditorModule } from '@tinymce/tinymce-angular';
-import { UpdatePostComponent } from './dashboard/POST/update-post/update-post.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { HttpClientInterceptor } from './interceptors/http-client-interceptor';
 import { ProfilComponent } from './profil/profil.component';
-import { EditorArticleComponent } from './dashboard/POST/editor-article/editor-article.component';
-import { UserListComponent } from './dashboard/USER/user-list/user-list.component';
-import { AdminListComponent } from './dashboard/USER/admin-list/admin-list.component';
 import { CommonModule } from '@angular/common';
-import { AddAdminComponent } from './dashboard/USER/add-admin/add-admin.component';
 import { ContactSuccessComponent } from './contact-form/contact-success/contact-success.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertsComponent } from './alerts/alerts.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import listPlugin from '@fullcalendar/list';
+import bootstrapPlugin from '@fullcalendar/bootstrap';
+import interactionPlugin from '@fullcalendar/interaction';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { onlyGuard } from './guards/only-guard.guard';
 
 
 @NgModule({
@@ -56,16 +57,10 @@ import { AlertsComponent } from './alerts/alerts.component';
     LastArticlesComponent,
     LegalMentionsComponent,
     SignupSuccessComponent,
-    AddPostComponent,
-    UpdatePostComponent,
-    //DashboardComponent,
     ProfilComponent,
-    //EditorArticleComponent,
-    //UserListComponent,
-    //AdminListComponent,
-    //AddAdminComponent,
     ContactSuccessComponent,
-    AlertsComponent
+    AlertsComponent,
+    CalendarComponent
   ],
   imports: [
     CommonModule,
@@ -76,11 +71,14 @@ import { AlertsComponent } from './alerts/alerts.component';
     RouterModule,
     NgxWebstorageModule.forRoot(),
     HttpClientModule,
-    EditorModule,
     DashboardModule,
-    NgbModule
+    NgbModule,
+    FullCalendarModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true},
+  onlyGuard],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule { }

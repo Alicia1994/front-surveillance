@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AddPostService } from '../../../services/post.service';
 import { Post } from '../../../models/post-payload';
+import { AdminService } from '../../service/admin.service';
 
 @Component({
   selector: 'app-add-post',
@@ -18,7 +19,7 @@ export class AddPostComponent implements OnInit {
   // title = new FormControl('');
   // body = new FormControl('');
 
-  constructor(private addpostService: AddPostService, private router: Router) {
+  constructor(private addpostService: AddPostService, private router: Router, private adminService: AdminService) {
     this.addPostForm = new FormGroup({});
     this.post = {
       content: '',
@@ -42,7 +43,7 @@ export class AddPostComponent implements OnInit {
 
     this.post.content = this.addPostForm.get('body').value;
     this.post.title = this.addPostForm.get('title').value;
-    this.sub = this.addpostService.create(this.post).subscribe(data => {
+    this.sub = this.adminService.create(this.post).subscribe(data => {
       this.router.navigateByUrl('/handle-post');
     }, error => {
       console.log('Failure Response');

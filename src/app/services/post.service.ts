@@ -18,9 +18,6 @@ export class AddPostService {
   baseUrl = `${environment.baseUrl}/posts`;
 
 
-  create(post: Post){
-    return this.httpClient.post(this.baseUrl, post);
-  }
 
     findAll(): Observable<Array<Post>>{
     return this.httpClient.get<Array<Post>>( this.baseUrl + '/all');
@@ -34,13 +31,6 @@ export class AddPostService {
     return this.httpClient.get<Array<User>>(`${this.baseUrl}/name/${username}`)
   }
 
-  update(post: Post){
-    return this.httpClient.put<Post>(this.baseUrl, post)
-  }
-
-  delete(idPost: Number):Observable<Post>{
-    return this.httpClient.delete<Post>(this.baseUrl + '/' + idPost)
-  }
 
   // deletePosts(){
   //   return this.httpClient.delete('http://localhost:8080/api/posts/')

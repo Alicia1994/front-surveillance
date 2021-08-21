@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AddPostService } from '../../../services/post.service';
+import { AdminService } from '../../service/admin.service';
 
 @Component({
   selector: 'app-update-post',
@@ -16,7 +17,7 @@ export class UpdatePostComponent implements OnInit {
   username: string;
   sub: Subscription;
 
-  constructor(private addPostService: AddPostService, private router: Router, private route: ActivatedRoute) {
+  constructor(private addPostService: AddPostService, private router: Router, private route: ActivatedRoute, private adminService: AdminService) {
     this.updatePostForm = new FormGroup({});
   }
 
@@ -66,7 +67,7 @@ console.log(this.updatePostForm);
 
     console.log(formValues);
     
-    this.addPostService.update(formValues).subscribe(
+    this.adminService.update(formValues).subscribe(
       resp => {
         console.log("modification effectuée")
        this.router.navigateByUrl("/handle-post")
