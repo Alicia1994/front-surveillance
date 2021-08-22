@@ -7,8 +7,7 @@ h1{
 
 
 .container-full {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px;
     padding: 10px;
     background: rgba(241, 184, 255, 1);   
 }
@@ -88,6 +87,8 @@ a {
 .container {
   margin: 0 auto;
   max-width: 980px;
+  display: flex;
+  justify-content: center;
 }
 .panel {
   box-sizing: border-box;
@@ -152,21 +153,10 @@ a {
       top: -5px;
     }
   }
- 
-  // &.user {
-  //   background-color: #fc1c3e;
-  //   &:after {
-  //     content: "\f007";
-  //     font-size: 200px;
-  //     color: darken(#fc1c3e, 8%);
-  //     top: 45px;
-  //     right: 35px;
-  //   }
-  //   &:hover:after {
-  //     top: 7px;
-  //   }
-  // }
-  // &:hover:after {
-  //   transition: all .5s;
-  // }
 }
+
+
+
+
+
+

@@ -1,14 +1,13 @@
-button{
-    width: 200px;
-    height: 40px;
-    background: rgba(241, 184, 255, 1);
+// button{
+//     width: 200px;
+//     height: 40px;
+//     background: rgba(241, 184, 255, 1);
     //#A144E0 !important;
-}
-
-// .buttons{
-//     display: flex;
-//     justify-content: space-around;
 // }
+
+.buttons{
+    display: flex;
+}
 
 // .content{
 //     flex-direction: column;
@@ -60,20 +59,22 @@ button{
 //     margin-right: 10px;
 // }
 
-// button{
-//     background-color: white;
-//     border: 10px solid;
-//     border-image-slice: 1;
-//     border-width: 3px;
-//     border-image-source: linear-gradient(#FE58ED, #5890FE);
-//     text-align-last: center;
-// }
+button{
+    background-color: white;
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 3px;
+    border-image-source: linear-gradient(#FE58ED, #5890FE);
+    text-align-last: center;
+    padding: 5px;
+    font-size: 18px;
+}
 
-// .read-article{
-//     margin: 5px;
-//     color: rgba(88, 144, 254, 1);
-//     font-weight: 600;
-// }
+.read-article{
+    margin: 5px;
+    color: rgba(88, 144, 254, 1);
+    font-weight: 600;
+}
 
 // .no-article {
 //     padding: 20px;
@@ -115,14 +116,10 @@ button{
 // }
 
 
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
-
-body {
-  color: #000;
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 1.6;
+//*********
+.container-full{
+  margin: 10px;
+  padding: 10px;
 }
 
 .container {
@@ -134,7 +131,7 @@ body {
 .grid-row {
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-start;
+  justify-content: flex-center;
 }
 
 .grid-item {
@@ -144,19 +141,11 @@ body {
   box-sizing: border-box;
 }
 
-.grid-row a {
-  text-decoration: none;
-}
+// .grid-row a {
+//   text-decoration: none;
+// }
 
-.wrapping-link {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 2;
-  color: currentColor;
-}
+
 
 .grid-item-wrapper {
   -webkit-box-sizing: initial;
@@ -172,62 +161,25 @@ body {
   position: relative;
 }
 
-.grid-item-container {
-  height: 100%;
-  width: 100%;
-  position: relative;
-}
-
-.grid-image-top {
-  height: 45%;
-  width: 120%;
-  background-size: cover;
-  position: relative;
-  background-position: 50% 50%;
-  left: -10.5%;
-  top: -4.5%;
-}
-
-.grid-image-top .centered {
-  text-align: center;
-  transform: translate(-50%, -50%);
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 54.5%;
-  left: 50%;
-  width: 60%;
-  height: 60%;
-  background-position: center;
-}
-
-.grid-image-top.rex-ray {
-  background: -webkit-gradient(linear,left top, left bottom,from(#007DB8),to(#00447C));
-  background: -webkit-linear-gradient(#007DB8,#00447C);
-  background: -o-linear-gradient(#007DB8,#00447C);
-  background: linear-gradient(#007DB8,#00447C);
-}
-
-.rex-ray-image {
-  background-image: url(https://thecodeteam.com/wp-content/uploads/2017/08/Rex-Ray-icon-209x300.png);
-}
 
 .grid-item-content {
   padding: 0 20px 20px 20px;
 }
 
 .item-title {
-  font-size: 24px;
+  font-size: 20px;
   line-height: 26px;
-  font-weight: 700;
-  margin-bottom: 18px;
+  font-weight: 700; 
+   margin-top: 8px;
+
+  margin-bottom: 12px;
   display: block;
 }
 
 .item-category {
   text-transform: uppercase;
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-size: 14px;
 }
 
@@ -237,47 +189,38 @@ body {
   font-size: 14px;
 }
 
-.more-info {
-  position: absolute;
-  bottom: 0;
-  margin-bottom: 25px;
-  padding-left: 0;
-  transition-duration: .5s;
-  font-size: 12px;
-  display: flex;
-}
-
-.more-info i {
-  padding-left: 5px;
-  transition-duration: .5s;
-}
-
-.grid-item:hover .more-info i {
-  padding-left: 20px;
-  transition-duration: .5s;
-}
-
-.more-info i::before {
-  font-size: 16px;
-}
-
-.grid-item:hover .grid-item-wrapper {
-  padding: 2% 2%;
-  margin: -2% -2%;
-}
-
 .image{
   background-color: blue;
-  min-width: 200px;
-  width: 200px;
+  
+  width: 100%;
   min-height: 200px;
-  height: 200px;
+  
 }
+
+// .grid-item-container{
+//   display: flex;
+// }
 
 @media(min-width: 700px) {
   .grid-item-container {
     display: flex;
   }
+
+  .container{
+    width: 100%;
+  }
+
+.image{
+  width: 40%;
+  min-width: 200px;
+}
+
+.grid-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-center;
+}
+
 }
 
 // @media(max-width: 1073px) {

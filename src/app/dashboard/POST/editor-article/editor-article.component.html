@@ -46,9 +46,9 @@
                             {{post?.username}}, <i class="far fa-calendar-alt"></i>
                             {{setTimeToMoment(post?.createdOn)}} </span>
                             <div class="buttons">
-                          <button class="read-article" routerLink="/post/{{post.id}}">Visualiser<i class="fas fa-long-arrow-alt-right"></i></button>
-                          <button class="read-article"  routerLink="/admin/handle-post/update-post/{{post.id}}">Modifier <i class="fas fa-long-arrow-alt-right"></i></button>
-                          <button class="read-article" (click)="deletePost(post.id)">Supprimer<i class="fas fa-long-arrow-alt-right"></i></button>
+                          <button class="read-article" routerLink="/post/{{post.id}}">Visualiser</button>
+                          <button class="read-article"  routerLink="/admin/handle-post/update-post/{{post.id}}">Modifier</button>
+                          <button class="read-article" (click)="deletePost(post.id)">Supprimer</button>
                         </div>
                         </div>
                       </div>
