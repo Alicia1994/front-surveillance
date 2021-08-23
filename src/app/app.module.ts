@@ -38,7 +38,7 @@ import bootstrapPlugin from '@fullcalendar/bootstrap';
 import interactionPlugin from '@fullcalendar/interaction';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { onlyGuard } from './guards/only-guard.guard';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -61,7 +61,7 @@ import { onlyGuard } from './guards/only-guard.guard';
     ContactSuccessComponent,
     AlertsComponent,
     CalendarComponent
-  ],
+    ],
   imports: [
     CommonModule,
     BrowserModule,
@@ -73,7 +73,8 @@ import { onlyGuard } from './guards/only-guard.guard';
     HttpClientModule,
     DashboardModule,
     NgbModule,
-    FullCalendarModule
+    FullCalendarModule,
+    Ng2SearchPipeModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true},
   onlyGuard],

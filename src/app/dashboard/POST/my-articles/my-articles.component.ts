@@ -7,6 +7,7 @@ import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { AddPostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
+import { AdminService } from '../../service/admin.service';
 
 @Component({
   selector: 'app-my-articles',
@@ -15,13 +16,29 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class MyArticlesComponent implements OnInit {
 
-  currentUserUsername: string;
+  currentUsername: string;
   posts$: Observable<Array<Post>>;
   
 
-  constructor(private postService: AddPostService, private authService: AuthService,  private localStorageService : LocalStorageService,) { }
+  constructor(
+    private localStorageService : LocalStorageService, 
+    private adminService: AdminService) { }
 
   ngOnInit() {
+
+    this.currentUsername = this.localStorageService.retrieve("username");
+ 
+    //this.posts$ = this.adminService.getPostsByUsername(this.currentUsername);
+    // .pipe(
+    //   map((posts: Array<Post>) => {
+    //     return posts ;
+    //   }));
+    // }
+
+  
+
+    };
+    
     // this.currentUserUsername = this.localStorageService.retrieve("username");
     // this.posts$ = this.postService.findPostByUsername(this.currentUserUsername);
     // .pipe(
@@ -49,5 +66,3 @@ export class MyArticlesComponent implements OnInit {
 //     return posts;
 // }));
 
-
-}

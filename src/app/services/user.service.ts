@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Post } from '../models/post-payload';
 import { User } from '../models/user';
 
 
@@ -37,5 +38,9 @@ export class UserService {
 
   deleteAdmin(idAdmin: Number): Observable<User>{
     return this.httpClient.delete<User>(this.baseUrl + '/admin/' + idAdmin)
+  }
+
+  addUserInPost(username: string, post: Post) {
+    return this.httpClient.post<User>(`${this.baseUrl}/${username}`, post);
   }
 }

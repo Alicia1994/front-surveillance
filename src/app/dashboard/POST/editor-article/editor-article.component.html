@@ -23,7 +23,12 @@
 
         <ng-template #block>
 
-           
+
+          <!-- <div class="search-article">
+            <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"  placeholder="Rechercher par titre..." >
+          </div> -->
+
+
                     <!-- <button> <a class="read-article" type="button"
                             routerLink="/post/{{post.id}}">Visualiser</a></button>
                     <button> <a class="read-article" type="button" (click)="deletePost(post.id)">Supprimer</a></button>
@@ -31,9 +36,6 @@
                     <!-- <button> <a class="read-article" type="button"
                             routerLink="/handle-post/update-post/{{post.id}}">Modifier</a></button>                         -->
                 
-
-
-
                 <div class="grid-row">
                   <div class="grid-item" *ngFor="let post of posts">
                     <div class="grid-item-wrapper">

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
-import { Subscription, Observable } from 'rxjs';
+import { Subscription, pipe, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Post } from 'src/app/models/post-payload';
 import { AddPostService } from 'src/app/services/post.service';
@@ -18,22 +18,20 @@ export class EditorArticleComponent implements OnInit {
   dataPosts: Post[];
   isDeleted: boolean = false;
   posts: Post[];
-  post: Post;
   posts$: Observable<Array<Post>>;
+  data;
+  searchText: string;
   
-  constructor(private addPostService: AddPostService, private router: Router, private adminService: AdminService) { }
+  constructor(private addPostService: AddPostService, 
+    private router: Router, 
+    private adminService: AdminService) { }
 
   ngOnInit() {
-    //this.posts$ = this.addPostService.findAll();
-
     this.posts$ = this.addPostService.findAll().pipe(
-      map((posts:Array<Post>) => {
-        // posts.forEach((post:Post) => {
-        // })
-        return posts;
-    }));
-    // ajouter une fonction d'attente de chargement de la page
-  }
+      map((posts: Array<Post>) => {
+        return posts ;
+      }));
+    }
 
 
 // ****** Handle the publication of the articles *********

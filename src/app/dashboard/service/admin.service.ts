@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'ngx-webstorage';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import {map} from 'rxjs/operators';
 import { JwtAutResponse } from '../../auth/jwt-aut-response';
 import { LoginPayload } from '../../auth/login-payload';
@@ -15,6 +15,9 @@ import { Post } from '../../models/post-payload';
   providedIn: 'root'
 })
 export class AdminService {
+
+  postSubject = new Subject<Post[]>();
+
   constructor(private httpClient: HttpClient) {
   }
 
@@ -22,6 +25,13 @@ export class AdminService {
 
      create(post: Post){
       return this.httpClient.post(this.baseUrl, post);
+    }
+
+    getPostsByUsername(username: string){
+      this.httpClient.get<Array<Post>>(`${this.baseUrl}/${username}`).subscribe(resp => {
+        this.postSubject.next(resp);
+        }
+      );
     }
   
 

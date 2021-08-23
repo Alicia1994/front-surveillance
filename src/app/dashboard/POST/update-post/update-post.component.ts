@@ -64,13 +64,11 @@ console.log(this.updatePostForm);
       content: this.updatePostForm.value.content,
       username: this.username
     }  
-
-    console.log(formValues);
     
     this.adminService.update(formValues).subscribe(
       resp => {
         console.log("modification effectuée")
-       this.router.navigateByUrl("/handle-post")
+       this.router.navigateByUrl("/admin/handle-post")
       }
     )
   }

@@ -19,7 +19,6 @@ const routes: Routes = [
 
   {
     path: '', component: LayoutComponent, children: [
-     
       { path: 'home', component: HomeComponent },
       { path: 'connexion', component: LoginComponent },
       { path: 'signup', component: SignupComponent },
@@ -31,13 +30,11 @@ const routes: Routes = [
       { path: 'post/:id', component: ArticleComponent },
       { path: 'blog', component: BlogComponent },
       { path: 'calendar', component: CalendarComponent },
-     
       { path: 'profil', canActivate: [AuthGuard], component: ProfilComponent },
       {
-        path: 'admin',
+        path: 'admin', canActivate: [AuthGuard], 
         loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
       },
-      //{ path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: '**', component: OhFourComponent },
       { path: '', redirectTo: '/not-found', pathMatch: 'full' },
     ]

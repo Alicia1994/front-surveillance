@@ -1,25 +1,12 @@
 <!-- ****** RUBRIQUES DES ARTICLES ****** -->
 
-
 <div class="container">
-
-
-    <!-- MESSAGE QUAND IL N'Y A PAS DE PUBLICATIONS -->
-    <!-- <div class="no-article" *ngIf="this.posts!==null">
-        <p>Pas encore de publication</p>
-    </div> -->
-
-
-
 
     <!--     <div class="buttons">
         <button class="focus"> FOCUS </button>
         <button class="news"> ACTUALITÉS</button>
         <button class="fight">LUTTER</button>
     </div> -->
-
-    <!-- <div class="row" *ngFor="let post of posts | async"> -->
-
 
     <div *ngIf="posts$ | async as posts">
         <div class="no-article" *ngIf="posts.length == 0; else block">
@@ -29,14 +16,20 @@
 
         <ng-template #block>
 
+          <div class="search-article">
+            <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"  placeholder="Rechercher par titre..." >
+          </div>
+
             <div class="main">
                 <ul class="cards" >
-                  <li class="cards_item" *ngFor='let post of posts'>
+                  <li class="cards_item" *ngFor='let post of posts | filter:searchText'>
                     <div class="card" >
                       <div class="card_image"><img src="https://picsum.photos/500/300/?image=10"></div>
                       <div class="card_content">
-                        <h2 class="card_title" routerLink="/post/{{post.id}}">{{post.title}}</h2>
-                        <p class="card_text"><i class="fas fa-user"></i>{{post?.username}}, <i class="fas fa-user"></i> {{setTimeToMoment(post?.createdOn)}}  </p>
+                        <h2 class="card_title" routerLink="/post/{{post.id}}">{{post?.title}}</h2>
+                        <p class="card_text"><i class="fas fa-user"></i>{{post?.username}}, 
+                          <i class="far fa-calendar-alt"></i>
+                            {{setTimeToMoment(post?.createdOn)}} </p>
                         <button class="btn card_btn" routerLink="/post/{{post.id}}">Lire l'article</button>
                       </div>
                     </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Post } from '../models/post-payload';
 import { AddPostService } from '../services/post.service';
@@ -17,14 +17,6 @@ export class BlogComponent implements OnInit {
 
   ngOnInit() {
     this.posts$ = this.postService.findAll();
-
-
-
-    // this.postService.getAllPosts().subscribe(
-    //   res=>{
-    //     this.posts = res;
-    //   }
-    // )
   }
 
 }

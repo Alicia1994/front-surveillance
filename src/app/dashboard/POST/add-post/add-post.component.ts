@@ -5,6 +5,8 @@ import { Subscription } from 'rxjs';
 import { AddPostService } from '../../../services/post.service';
 import { Post } from '../../../models/post-payload';
 import { AdminService } from '../../service/admin.service';
+import { UserService } from 'src/app/services/user.service';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-add-post',
@@ -15,11 +17,17 @@ export class AddPostComponent implements OnInit {
 
   addPostForm: FormGroup;
   post: Post;
-  sub :Subscription;
+ // sub: Subscription;
+  currentUsername?: any;
   // title = new FormControl('');
   // body = new FormControl('');
 
-  constructor(private addpostService: AddPostService, private router: Router, private adminService: AdminService) {
+  constructor(private addpostService: AddPostService,
+    private router: Router,
+    private adminService: AdminService,
+    private localStorageService : LocalStorageService, 
+    private userService: UserService) {
+
     this.addPostForm = new FormGroup({});
     this.post = {
       content: '',
@@ -32,7 +40,7 @@ export class AddPostComponent implements OnInit {
     this.initForm();
   }
 
-  initForm(){
+  initForm() {
     this.addPostForm = new FormGroup({
       title: new FormControl(''),
       body: new FormControl(''),
@@ -43,10 +51,19 @@ export class AddPostComponent implements OnInit {
 
     this.post.content = this.addPostForm.get('body').value;
     this.post.title = this.addPostForm.get('title').value;
-    this.sub = this.adminService.create(this.post).subscribe(data => {
-      this.router.navigateByUrl('/handle-post');
-    }, error => {
-      console.log('Failure Response');
-    })
+    this.currentUsername = this.localStorageService.retrieve("username");
+
+    this.adminService.create(this.post).subscribe(data => {
+      console.log(data);
+      this.userService.addUserInPost(this.currentUsername, this.post).subscribe(resp => {
+        console.log('Post ajouté à la liste de l\'utilisateur');
+        this.adminService.getPostsByUsername(this.currentUsername);
+
+        this.router.navigateByUrl('/admin/handle-post');
+      })
+      
+      }, error => {
+        console.log('Failure Response');
+      })
+    }
   }
-}

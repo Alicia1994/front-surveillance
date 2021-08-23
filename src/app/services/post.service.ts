@@ -11,13 +11,11 @@ import { User } from '../models/user';
 })
 export class AddPostService {
 
-
+  posts;
   constructor(private httpClient: HttpClient) {
   }
 
   baseUrl = `${environment.baseUrl}/posts`;
-
-
 
     findAll(): Observable<Array<Post>>{
     return this.httpClient.get<Array<Post>>( this.baseUrl + '/all');
@@ -30,7 +28,6 @@ export class AddPostService {
   findPostByUsername(username: string) {
     return this.httpClient.get<Array<User>>(`${this.baseUrl}/name/${username}`)
   }
-
 
   // deletePosts(){
   //   return this.httpClient.delete('http://localhost:8080/api/posts/')

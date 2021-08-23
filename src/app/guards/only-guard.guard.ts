@@ -3,9 +3,8 @@ import { AuthService } from '../services/auth.service';
 import { RoleGuard } from './role.guard';
 
 export function isOnlyGuard (authService : AuthService, router : Router){
-  return new RoleGuard(router, authService)
+  return new RoleGuard(router, authService);
 }
-
 
 export const onlyGuard = {
   provide: "onlyGuard",
