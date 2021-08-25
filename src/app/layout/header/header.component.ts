@@ -8,7 +8,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService) {
+   }
 
   ngOnInit(): void {
     let menuBtn = document.querySelector("#menu-mobile");
@@ -33,14 +34,30 @@ export class HeaderComponent implements OnInit {
       menu?.classList.toggle('show');
     })
 
-  }
 
+    
+    
+    
+  }
+  
   logout(){
     this.authService.logout();
   }
+  
+  isAdmin(): boolean{
+    if(this.authService.isAuthenticated()){
+      return this.authService.getUserToken().role[0].authority == "ADMIN";
+    }
+  }
 
+  isUser(): boolean{
+    if(this.authService.isAuthenticated()){
+      return this.authService.getUserToken().role[0].authority == "USER";
+    }
+  }
+  
   // alicia(){
-  //   return this.authService.isAuthenticated();
+    //   return this.authService.isAuthenticated();
   // } // puis dans TS : appeler la méthode au lieu de auth.service.isauthenticated()
 
 }

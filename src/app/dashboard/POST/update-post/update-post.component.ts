@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { CategorieService } from 'src/app/services/categorie.service';
 import { AddPostService } from '../../../services/post.service';
 import { AdminService } from '../../service/admin.service';
 
@@ -16,14 +17,25 @@ export class UpdatePostComponent implements OnInit {
   id: number;
   username: string;
   sub: Subscription;
+  categories: [] = [];  
 
-  constructor(private addPostService: AddPostService, private router: Router, private route: ActivatedRoute, private adminService: AdminService) {
+
+  constructor(
+    private addPostService: AddPostService, 
+    private router: Router, 
+    private route: ActivatedRoute, 
+    private adminService: AdminService,
+    private categorieService: CategorieService,  
+    private fb: FormBuilder) {
     this.updatePostForm = new FormGroup({});
   }
 
   ngOnInit(): void {
 
     this.initForm();
+    this.categorieService.findAll().subscribe((data : any) => {
+      this.categories = data;
+    })
 
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
@@ -35,12 +47,11 @@ export class UpdatePostComponent implements OnInit {
           title: post.title,
           content: post.content,
           id: post.id,
-          username: post.username
+          username: post.username,
+          categorie: post.categorie
         
         })
        this.username = post.username;
-       console.log(this.username);
-        // post.username = this.username
       })
     })
  
@@ -51,9 +62,10 @@ export class UpdatePostComponent implements OnInit {
       title: new FormControl(''),
       content: new FormControl(''),
       id: new FormControl(0),
-      username: new FormControl('')
+      username: new FormControl(''),
+      categorie: this.fb.group({id: new FormControl('')})
+
     });
-console.log(this.updatePostForm);
   }
 
   updatePost(){
@@ -62,7 +74,8 @@ console.log(this.updatePostForm);
       id:this.id,
       title: this.updatePostForm.value.title,
       content: this.updatePostForm.value.content,
-      username: this.username
+      username: this.username,
+      categorie: this.updatePostForm.value.categorie
     }  
     
     this.adminService.update(formValues).subscribe(

@@ -11,7 +11,7 @@ import { User } from '../models/user';
 })
 export class AddPostService {
 
-  posts;
+  
   constructor(private httpClient: HttpClient) {
   }
 

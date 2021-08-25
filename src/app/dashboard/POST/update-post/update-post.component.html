@@ -14,6 +14,12 @@
           <label class="post-content">Contenu</label>
           <editor formControlName="content" [init]="{plugins: 'link'}"></editor>
         </div>
+        <div class="form-group" formGroupName="categorie">
+          <label for="post-content">Choisir une catégorie</label>
+          <select  formControlName="id" name="categories">
+            <option *ngFor="let categorie of categories" [value]="categorie.id">{{categorie.name}}</option>         
+        </select>
+        </div>
         <div class="form-group form-btn">
           <button type="submit" class="btn btn-primary">Modifier</button>
         </div>

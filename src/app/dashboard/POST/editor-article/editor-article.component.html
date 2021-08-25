@@ -1,68 +1,70 @@
 <div class="container">
 
 
-    <!-- MESSAGE QUAND IL N'Y A PAS DE PUBLICATIONS -->
-    <!-- <div class="no-article" *ngIf="this.posts!==null">
+  <!-- MESSAGE QUAND IL N'Y A PAS DE PUBLICATIONS -->
+  <!-- <div class="no-article" *ngIf="this.posts!==null">
         <p>Pas encore de publication</p>
     </div> -->
 
-    <!--     <div class="buttons">
+  <!--     <div class="buttons">
         <button class="focus"> FOCUS </button>
         <button class="news"> ACTUALITÉS</button>
         <button class="fight">LUTTER</button>
     </div> -->
 
-    <!-- <div class="row" *ngFor="let post of posts | async"> -->
+  <!-- <div class="row" *ngFor="let post of posts | async"> -->
 
 
-    <div *ngIf="posts$ | async as posts">
-        <div class="no-article" *ngIf="posts.length == 0; else block">
+  <div *ngIf="posts$ | async as posts">
+    <div class="no-article" *ngIf="posts.length == 0; else block">
 
-            <p>Vous n'avez publié aucun article sur le blog !</p>
-        </div>
+      <p>Vous n'avez publié aucun article sur le blog !</p>
+    </div>
 
-        <ng-template #block>
+    <ng-template #block>
+
+      <div class="buttons-categories">
+        <button class="focus" (click)="clickFocus()"> Focus </button>
+        <button class="actualites" (click)="clickActualites()"> Actualités</button>
+        <button class="lutter" (click)="clickAgir()">Agir</button>
+        <button class="lutter" (click)="clickAll()">Tous</button>
+  
+      </div>
+  
 
 
-          <!-- <div class="search-article">
+      <!-- <div class="search-article">
             <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"  placeholder="Rechercher par titre..." >
           </div> -->
 
 
-                    <!-- <button> <a class="read-article" type="button"
-                            routerLink="/post/{{post.id}}">Visualiser</a></button>
-                    <button> <a class="read-article" type="button" (click)="deletePost(post.id)">Supprimer</a></button>
-                    <button> <a class="read-article" type="button" (click)="updatePost(post.id)">Modifier</a></button> -->
-                    <!-- <button> <a class="read-article" type="button"
-                            routerLink="/handle-post/update-post/{{post.id}}">Modifier</a></button>                         -->
-                
-                <div class="grid-row">
-                  <div class="grid-item" *ngFor="let post of posts">
-                    <div class="grid-item-wrapper">
-                      <div class="grid-item-container">
-                    <div class="image"></div>
-                        <div class="grid-item-content">
-                          <span class="item-title">{{post?.title}}</span>
-                          <span class="item-category">Catégorie</span>
-                          <span class="item-excerpt"><i class="fas fa-user"></i>
-                            {{post?.username}}, <i class="far fa-calendar-alt"></i>
-                            {{setTimeToMoment(post?.createdOn)}} </span>
-                            <div class="buttons">
-                          <button class="read-article" routerLink="/post/{{post.id}}">Visualiser</button>
-                          <button class="read-article"  routerLink="/admin/handle-post/update-post/{{post.id}}">Modifier</button>
-                          <button class="read-article" (click)="deletePost(post.id)">Supprimer</button>
-                        </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>                  
+      <div class="grid-row">
+        <div class="grid-item" *ngFor="let post of posts">
+          <div class="grid-item-wrapper">
+            <div class="grid-item-container">
+              <div class="image"></div>
+              <div class="grid-item-content">
+                <span class="item-title">{{post?.title}}</span>
+                <span class="item-category">Catégorie</span>
+                <span class="item-excerpt"><i class="fas fa-user"></i>
+                  {{post?.username}}, <i class="far fa-calendar-alt"></i>
+                  {{setTimeToMoment(post?.createdOn)}}, #{{post?.categorie?.name}}</span>
+                <div class="buttons">
+                  <button class="read-article" routerLink="/post/{{post.id}}">Visualiser</button>
+                  <button class="read-article" routerLink="/admin/handle-post/update-post/{{post.id}}">Modifier</button>
+                  <button class="read-article" (click)="deletePost(post.id)">Supprimer</button>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-            
-            
+
+
 
 
     </ng-template>
 
-</div>
+  </div>
 </div>

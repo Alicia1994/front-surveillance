@@ -7,6 +7,17 @@ export const environment = {
   baseUrl: "http://localhost:8080/api"
 };
 
+export const environmentAngolia = {
+  algolia:{
+    appId: 'APP_ID',
+    apiKey: 'SEARCH_ONLY_API_KEYS',
+    indexName: 'getstarted_actors',
+    urlSync: false
+  }
+}
+
+
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

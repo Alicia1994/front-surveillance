@@ -38,16 +38,21 @@
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink="blog">Blog</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="calendar">Calendrier</a>
+        </li>
         <li class="nav-item" *ngIf="!authService.isAuthenticated()">
           <a class="nav-link" routerLinkActive="active" routerLink="connexion">Connexion</a>
         </li>
-        <li class="nav-item" *ngIf="authService.isAuthenticated()">
+        <li class="nav-item" *ngIf="isAdmin()">
           <a class="nav-link" routerLinkActive="active" routerLink="admin">Dashboard</a>
+        </li>
+        <li class="nav-item" *ngIf="isUser()">
+          <a class="nav-link" routerLinkActive="active" routerLink="profil">Profil</a>
         </li>
         <li class="nav-item" *ngIf="authService.isAuthenticated()">
           <a class="nav-link" (click)="logout()" routerLinkActive="active" routerLink="connexion">Déconnexion</a>
         </li>
-
 
       </ul>
     </div>

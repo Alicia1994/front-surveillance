@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { Post } from 'src/app/models/post-payload';
 import { AddPostService } from 'src/app/services/post.service';
 import * as moment from "moment";
+import { AuthService } from 'src/app/services/auth.service';
 
 moment.locale('fr');
 @Component({
@@ -21,14 +22,36 @@ export class ArticleListComponent implements OnInit {
   posts$: Observable<Array<Post>>;
   searchText: string;
 
-
-  constructor(private addPostService: AddPostService, private router: Router) { }
+  constructor(private addPostService: AddPostService, private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
     this.posts$ = this.addPostService.findAll().pipe(
       map((posts: Array<Post>) => {
+        console.log(posts);
         return posts ;
       }));
+
+
+
+    //   this.users$ = this.userService.findAllUsers().pipe(
+    //     map(users=> users.filter(user => user.role == 'USER'))
+    //   );
+    // }
+
+
+    }
+
+  
+    clickCat(nameCat: string){
+      this.posts$ = this.addPostService.findAll().pipe(
+        map(posts => posts.filter(post => post?.categorie?.name ==nameCat)));
+    }
+
+    clickAll(){
+      this.posts$ = this.addPostService.findAll().pipe(
+        map((posts: Array<Post>) => {
+          return posts ;
+        }));
     }
 
 

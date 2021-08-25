@@ -39,6 +39,17 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { onlyGuard } from './guards/only-guard.guard';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { Calendar } from '@fullcalendar/core';
+import googleCalendarPlugin from '@fullcalendar/google-calendar';
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin,
+  bootstrapPlugin,
+  listPlugin,
+  timeGridPlugin,
+  googleCalendarPlugin
+]);
 
 @NgModule({
   declarations: [
@@ -61,6 +72,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ContactSuccessComponent,
     AlertsComponent,
     CalendarComponent
+    
     ],
   imports: [
     CommonModule,

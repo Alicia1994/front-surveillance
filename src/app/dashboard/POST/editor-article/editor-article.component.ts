@@ -34,6 +34,28 @@ export class EditorArticleComponent implements OnInit {
     }
 
 
+    clickAgir(){
+      this.posts$ = this.addPostService.findAll().pipe(
+        map(posts => posts.filter(post => post?.categorie?.name == "Agir")));
+    }
+
+    clickActualites(){
+      this.posts$ = this.addPostService.findAll().pipe(
+        map(posts => posts.filter(post => post?.categorie?.name == "Actualités")));
+    }
+
+    clickFocus(){
+      this.posts$ = this.addPostService.findAll().pipe(
+        map(posts => posts.filter(post => post?.categorie?.name == "Focus")));
+    }
+
+    clickAll(){
+      this.posts$ = this.addPostService.findAll().pipe(
+        map((posts: Array<Post>) => {
+          return posts ;
+        }));
+    }
+
 // ****** Handle the publication of the articles *********
   setTimeToMoment(date: string){
     const date1  = moment(date, "YYYY-MM-DD h-mm");

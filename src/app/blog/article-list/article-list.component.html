@@ -1,44 +1,50 @@
-<!-- ****** RUBRIQUES DES ARTICLES ****** -->
-
 <div class="container">
 
-    <!--     <div class="buttons">
-        <button class="focus"> FOCUS </button>
-        <button class="news"> ACTUALITÉS</button>
-        <button class="fight">LUTTER</button>
-    </div> -->
+  <div *ngIf="posts$ | async as posts">
 
-    <div *ngIf="posts$ | async as posts">
-        <div class="no-article" *ngIf="posts.length == 0; else block">
-
-            <p>Vous n'avez publié aucun article sur le blog !</p>
-        </div>
-
-        <ng-template #block>
-
-          <div class="search-article">
-            <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"  placeholder="Rechercher par titre..." >
-          </div>
-
-            <div class="main">
-                <ul class="cards" >
-                  <li class="cards_item" *ngFor='let post of posts | filter:searchText'>
-                    <div class="card" >
-                      <div class="card_image"><img src="https://picsum.photos/500/300/?image=10"></div>
-                      <div class="card_content">
-                        <h2 class="card_title" routerLink="/post/{{post.id}}">{{post?.title}}</h2>
-                        <p class="card_text"><i class="fas fa-user"></i>{{post?.username}}, 
-                          <i class="far fa-calendar-alt"></i>
-                            {{setTimeToMoment(post?.createdOn)}} </p>
-                        <button class="btn card_btn" routerLink="/post/{{post.id}}">Lire l'article</button>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-                        <!-- <button> <a class="read-article" type="button" routerLink="/post/{{post.id}}">Lire
-                                l'article</a></button> -->
-        </ng-template>
+<!-- BUTTONS  FILTRE DE CATEGORIES -->
+    <div class="buttons-categories">
+      <button class="focus" (click)="clickCat('Focus')"> Focus </button>
+      <button class="actualites" (click)="clickCat('Actualités')"> Actualités</button>
+      <button class="lutter" (click)="clickCat('Agir')">Agir</button>
+      <button class="lutter" (click)="clickAll()">Tous</button>
 
     </div>
+
+
+    <div class="no-article" *ngIf="posts.length == 0; else block">
+
+      <p>Vous n'avez publié aucun article sur le blog !</p>
+    </div>
+
+    <ng-template #block>
+
+      <div class="search-article">
+        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+          placeholder="Rechercher par titre...">
+      </div>
+
+      <div class="main">
+        <ul class="cards">
+          <li class="cards_item" *ngFor='let post of posts | filter:searchText'>
+            <div class="card">
+              <div class="card_image"><img src="https://picsum.photos/500/300/?image=10"></div>
+              <div class="card_content">
+                <h2 class="card_title" routerLink="/post/{{post.id}}">{{post?.title}}</h2>
+                <p class="card_text"><i class="fas fa-user"></i>{{post?.username}},
+                  <i class="far fa-calendar-alt"></i>
+                  {{setTimeToMoment(post?.createdOn)}}
+                  #{{post?.categorie?.name}}
+                </p>
+                <button class="btn card_btn" routerLink="/post/{{post.id}}">Lire l'article</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!-- <button> <a class="read-article" type="button" routerLink="/post/{{post.id}}">Lire
+                                l'article</a></button> -->
+    </ng-template>
+
+  </div>
 </div>
