@@ -48,6 +48,11 @@ export class AuthService {
     return this.localStorageService.retrieve("authenticationToken") !== null;
   }
 
+  isTokenExpired(): Boolean{
+    const token = this.localStorageService.retrieve("authenticationToken");
+  return this.jwtHelper.isTokenExpired(token);
+  }
+
   logout() {
     this.localStorageService.clear('authenticationToken');
     this.localStorageService.clear('username');
@@ -56,13 +61,13 @@ export class AuthService {
 
   getUserToken() {
     const token = this.localStorageService.retrieve("authenticationToken");
-    console.log(token);
     const decode = this.jwtHelper.decodeToken(token);
     if (decode !== null) {
       if (!this.jwtHelper.isTokenExpired(token)) {
         return { ...decode, token };
       } else {
-        localStorage.removeItem('authenticationToken');
+        this.localStorageService.clear('authenticationToken');
+        this.router.navigate(['/connexion'])
       }
     }
     return null;

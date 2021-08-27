@@ -9,6 +9,15 @@
     display: flex;
 }
 
+.buttons-categories{
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  button{
+    width: 25%;
+  }
+}
+
 // .content{
 //     flex-direction: column;
 //     width: 60%;

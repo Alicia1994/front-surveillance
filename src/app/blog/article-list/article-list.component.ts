@@ -6,6 +6,7 @@ import { Post } from 'src/app/models/post-payload';
 import { AddPostService } from 'src/app/services/post.service';
 import * as moment from "moment";
 import { AuthService } from 'src/app/services/auth.service';
+import { environmentApi } from 'src/environments/environment';
 
 moment.locale('fr');
 @Component({
@@ -27,7 +28,6 @@ export class ArticleListComponent implements OnInit {
   ngOnInit() {
     this.posts$ = this.addPostService.findAll().pipe(
       map((posts: Array<Post>) => {
-        console.log(posts);
         return posts ;
       }));
 
@@ -69,6 +69,11 @@ setTimeToMoment(date: string){
     return day + " à " + hour
   }
   //console.log(new Date('2021-08-13 13:43').getHours())
+}
+
+
+path(post: Post): string{
+  return `${environmentApi.apiUrlImage}/${post.id}/${post.image}`;
 }
 
 }

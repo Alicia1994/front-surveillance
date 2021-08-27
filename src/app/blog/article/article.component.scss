@@ -1,3 +1,8 @@
+span{
+    display: flex;
+    justify-content: space-between;
+}
+
 .container{
     width: 90%;
     height: 90%;
@@ -29,6 +34,11 @@
 }
 
 .article-author{
+    padding-left: 10px;
+    font-style: italic;
+}
+
+.article-created{
     padding-left: 10px;
     font-style: italic;
 }

@@ -14,6 +14,7 @@ import { AuthGuard } from './auth.guard';
 import { ProfilComponent } from './profil/profil.component';
 import { ContactSuccessComponent } from './contact-form/contact-success/contact-success.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
 
@@ -30,6 +31,8 @@ const routes: Routes = [
       { path: 'post/:id', component: ArticleComponent },
       { path: 'blog', component: BlogComponent },
       { path: 'calendar', component: CalendarComponent },
+      {path: 'about', component: AboutComponent},
+
       { path: 'profil', canActivate: [AuthGuard], component: ProfilComponent },
       {
         path: 'admin', canActivate: [AuthGuard], 

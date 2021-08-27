@@ -28,18 +28,24 @@ export class ArticleComponent implements OnInit {
     this.postService.findById(this.idPost).subscribe((data:Post) => {
       this.post = data;
     },(err: any) => {
-      console.log('Failure Response');
-      
+      console.log('Failure Response');  
     })
+    
+  }
 
-   
-
-
-
-    // this.postService.deletePost(this.permaLink).subscribe(data => {
-    //   console.log(data);
-    // })
-  
+  setTimeToMoment(date: string){
+    const date1  = moment(date, "YYYY-MM-DD h-mm");
+    const date2  = moment(new Date().toLocaleString(), "DD/MM/YYYY, h:mm:s");
+    const dateDiff = date2.diff(date1, "hours");
+    if(dateDiff < 24){
+      return moment(date, "YYYY-MM-DD h-mm").fromNow();
+    } else if (dateDiff>=24){
+     const dateSplit = date.split(" ");
+     const day = dateSplit[0].replace(/-/g, "/").split("/").reverse().join("/");
+     const hour = dateSplit[1].replace("-", "h")
+      return day + " à " + hour
+    }
+    //console.log(new Date('2021-08-13 13:43').getHours())
   }
 
   // public deletePost(): void{

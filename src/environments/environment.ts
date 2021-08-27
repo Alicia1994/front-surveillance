@@ -7,13 +7,9 @@ export const environment = {
   baseUrl: "http://localhost:8080/api"
 };
 
-export const environmentAngolia = {
-  algolia:{
-    appId: 'APP_ID',
-    apiKey: 'SEARCH_ONLY_API_KEYS',
-    indexName: 'getstarted_actors',
-    urlSync: false
-  }
+export const environmentApi = {
+  apiUrlImage : "http://localhost:8080/post-photos"
+ 
 }
 
 

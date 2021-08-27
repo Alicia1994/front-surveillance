@@ -1,3 +1,4 @@
+import { environment, environmentApi } from "src/environments/environment";
 import { Categorie } from "./categorie";
 
 export class Post {
@@ -7,7 +8,9 @@ export class Post {
     public title?: string;
     public username?: string;
     public createdOn?: string;
-    public categorie?: Categorie
+    public updatedOn?: string;
+    public categorie?: Categorie;
+    public image?: string;
 
     constructor(title, content, username, categorie){
       this.title = title;
@@ -15,5 +18,6 @@ export class Post {
      // this.username = username;
       this.categorie = categorie;
     }
+   
 
 }

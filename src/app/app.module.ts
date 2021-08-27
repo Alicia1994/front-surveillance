@@ -41,6 +41,8 @@ import { onlyGuard } from './guards/only-guard.guard';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { Calendar } from '@fullcalendar/core';
 import googleCalendarPlugin from '@fullcalendar/google-calendar';
+import { UpdateProfilComponent } from './profil/update-profil/update-profil.component';
+import { AboutComponent } from './about/about.component';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -71,7 +73,9 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ProfilComponent,
     ContactSuccessComponent,
     AlertsComponent,
-    CalendarComponent
+    CalendarComponent,
+    UpdateProfilComponent,
+    AboutComponent
     
     ],
   imports: [

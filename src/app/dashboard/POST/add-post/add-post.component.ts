@@ -9,6 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 import { LocalStorageService } from 'ngx-webstorage';
 import { CategorieService } from 'src/app/services/categorie.service';
 import { Categorie } from 'src/app/models/categorie';
+import { environmentApi } from 'src/environments/environment';
 
 @Component({
   selector: 'app-add-post',
@@ -20,13 +21,17 @@ export class AddPostComponent implements OnInit {
   addPostForm: FormGroup;
   post: Post;
   currentUsername?: any;
-  categories: [] = [];  
+  categories: [] = [];
+  userFile;
+  public imagePath;
+  imgURL: any;
+
 
   constructor(
     private addpostService: AddPostService,
     private router: Router,
     private adminService: AdminService,
-    private localStorageService : LocalStorageService, 
+    private localStorageService: LocalStorageService,
     private userService: UserService,
     private categorieService: CategorieService,
     private fb: FormBuilder) {
@@ -36,40 +41,48 @@ export class AddPostComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
-    this.categorieService.findAll().subscribe((data : any) => {
+    this.categorieService.findAll().subscribe((data: any) => {
       this.categories = data;
     })
   }
 
+
   initForm() {
     this.addPostForm = new FormGroup({
       title: new FormControl(''),
+      //[Validators.required]
       content: new FormControl(''),
-      categorie: this.fb.group({id: new FormControl('')})
+      categorie: this.fb.group({ id: new FormControl('') }),
+      //image: new FormControl('')
     })
   }
 
   addPost() {
+    const formData = new FormData();
     const newPost = this.addPostForm.value;
-    console.log(newPost);
-
-    // this.post.content = this.addPostForm.get('content').value;
-    // this.post.title = this.addPostForm.get('title').value;
-    // this.post.categorie = this.addPostForm.get('categorie').value;
+    formData.append('file', this.userFile);
+    formData.append("post", new Blob([JSON.stringify(newPost)], { type: "application/json" }))
     this.currentUsername = this.localStorageService.retrieve("username");
-    this.adminService.create(newPost).subscribe(data => {
+    this.adminService.create(formData).subscribe(data => {
+      this.router.navigateByUrl('/admin/handle-post');
+    }, error => {
+      console.log('Failure Response');
+    })
+  }
 
-      
-      console.log(data);
-      // this.userService.addUserInPost(this.currentUsername, this.post).subscribe(resp => {
-      //   console.log('Post ajouté à la liste de l\'utilisateur');
-      //   this.adminService.getPostsByUsername(this.currentUsername);
+  onSelectFile(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.userFile = file;
+      console.log(this.userFile);
 
-        this.router.navigateByUrl('/admin/handle-post');
-      // })
-      
-      }, error => {
-        console.log('Failure Response');
-      })
+      var reader = new FileReader();
+      this.imagePath = file;
+      reader.readAsDataURL(file);
+      reader.onload = (_event) => {
+        this.imgURL = reader.result;
+      }
     }
   }
+
+}

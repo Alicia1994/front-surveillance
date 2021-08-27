@@ -9,15 +9,15 @@
           <h1 class="article-title">{{post?.title}}</h1>
           <span>
                     <p class="article-author">par {{post?.username}}</p>
+                    <p class="article-created"  *ngIf= "post?.updatedOn === post?.createdOn">{{setTimeToMoment(post?.createdOn)}}</p>
+                    <p class="article-updated" *ngIf= "post?.updatedOn !== post?.createdOn">Mise à jour : {{setTimeToMoment(post?.updatedOn)}}</p> 
+
                 </span>
           <hr>
           <p class="article-content" [innerHTML]="post?.content"></p>
           <hr>
 
           <button class="btn btn-info" type="button" routerLink="/blog">Retour</button>
-
-          <!-- <button class="btn btn-outline-danger delete-btn" type="button" (click)="deletePost()" routerLink="/blog">Supprimer</button>
-          <button class="btn btn-outline-danger delete-btn" type="button" (click)="updatePost()">Modifier</button> -->
 
           
         </div>
@@ -39,21 +39,3 @@
 </div> -->
 
 
-<!-- <div class="content">
-    <div class="container">
-      <div class="row" *ngFor="let post of posts | async">
-        <div class="blogpost">
-          <h3><a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></h3>
-          <div>
-            <i class="fas fa-user"></i> Author: <p>{{post.username}}</p>
-          </div>
-          <p [innerHTML]="post.content"></p>
-          <div>
-            <a type="button" href="/post/{{post.id}}" class="read-more btn btn-default">Read More</a>
-          </div>
-          <hr>
-        </div>
-        <hr>
-      </div>
-    </div>
-  </div> -->

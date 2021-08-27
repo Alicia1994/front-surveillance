@@ -27,7 +27,8 @@ export class HttpClientInterceptor implements HttpInterceptor {
 
   private handleError(err: HttpErrorResponse): Observable<any> {
     if (err.status === 401 || err.status === 403 || err.status === 404) {
-      localStorage.clear();
+      this.$localStorage.clear('authenticationToken');
+      this.$localStorage.clear('username');
       this.router.navigateByUrl(`/home`);    
     }
     return null;

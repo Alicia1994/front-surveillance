@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalStorageService } from 'ngx-webstorage';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,7 +9,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public authService: AuthService) {
+  constructor(public authService: AuthService,
+    private localStorageService: LocalStorageService) {
    }
 
   ngOnInit(): void {
@@ -34,10 +36,6 @@ export class HeaderComponent implements OnInit {
       menu?.classList.toggle('show');
     })
 
-
-    
-    
-    
   }
   
   logout(){
@@ -46,13 +44,20 @@ export class HeaderComponent implements OnInit {
   
   isAdmin(): boolean{
     if(this.authService.isAuthenticated()){
+
       return this.authService.getUserToken().role[0].authority == "ADMIN";
+    } else {
+      this.localStorageService.clear('authenticationToken');
+      this.localStorageService.clear('username');
     }
   }
 
   isUser(): boolean{
     if(this.authService.isAuthenticated()){
       return this.authService.getUserToken().role[0].authority == "USER";
+    } else {
+      this.localStorageService.clear('authenticationToken');
+      this.localStorageService.clear('username');
     }
   }
   

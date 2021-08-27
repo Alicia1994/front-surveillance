@@ -13,11 +13,15 @@ import { AdminService } from '../../service/admin.service';
 })
 export class UpdatePostComponent implements OnInit {
 
+  userFile;
+  imgURL: any;
   updatePostForm: FormGroup;
   id: number;
   username: string;
   sub: Subscription;
   categories: [] = [];  
+  public imagePath;
+
 
 
   constructor(
@@ -43,14 +47,15 @@ export class UpdatePostComponent implements OnInit {
       this.addPostService.findById(this.id).subscribe(post => {
         this.id = post.id;
         
-        this.updatePostForm.setValue({
-          title: post.title,
-          content: post.content,
-          id: post.id,
-          username: post.username,
-          categorie: post.categorie
-        
-        })
+        // this.updatePostForm.setValue({
+        //   title: post.title,
+        //   content: post.content,
+        //   id: post.id,
+        //   username: post.username,
+        //   categorie: post.categorie
+        // })
+        this.updatePostForm.patchValue(post);
+
        this.username = post.username;
       })
     })
@@ -63,27 +68,50 @@ export class UpdatePostComponent implements OnInit {
       content: new FormControl(''),
       id: new FormControl(0),
       username: new FormControl(''),
-      categorie: this.fb.group({id: new FormControl('')})
+      categorie: this.fb.group({id: new FormControl('')}),
+      image: new FormControl('')
 
     });
   }
 
   updatePost(){
 
-    const formValues = {
-      id:this.id,
-      title: this.updatePostForm.value.title,
-      content: this.updatePostForm.value.content,
-      username: this.username,
-      categorie: this.updatePostForm.value.categorie
-    }  
+    // const formValues = {
+    //   id:this.id,
+    //   title: this.updatePostForm.value.title,
+    //   content: this.updatePostForm.value.content,
+    //   username: this.username,
+    //   categorie:  this.fb.group({ id: new FormControl('') }),
+    // }  
+
+console.log(this.updatePostForm.value);
+
+    const formData = new FormData();
+    const newPost = this.updatePostForm.value;
+    formData.append('file', this.userFile);
+    formData.append("post", new Blob([JSON.stringify(newPost)], { type: "application/json" }));
     
-    this.adminService.update(formValues).subscribe(
+    this.adminService.update(formData).subscribe(
       resp => {
         console.log("modification effectuée")
        this.router.navigateByUrl("/admin/handle-post")
       }
     )
+  }
+
+
+  onSelectFile(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.userFile = file;
+      var reader = new FileReader();
+      this.imagePath = file;
+      console.log(file);
+      reader.readAsDataURL(file);
+      reader.onload = (_event) => {
+        this.imgURL = reader.result;
+      }
+    }
   }
 
 }

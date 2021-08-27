@@ -19,6 +19,7 @@ export class CalendarComponent {
           center: 'title',
           right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
         },
+    locale: 'fr',
     plugins: [ googleCalendarPlugin ],
     initialView: 'dayGridMonth',
     dateClick: this.handleDateClick.bind(this), // bind is important!

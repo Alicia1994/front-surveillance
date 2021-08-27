@@ -30,12 +30,10 @@ export class ContactFormComponent implements OnInit {
       )
       .then(
         (result: EmailJSResponseStatus) => {
-          //console.log(result.text);
           this.router.navigate(['/contact-success']); 
 
         },
         (error) => {
-          //console.log(error.text);
         }
       );
   }

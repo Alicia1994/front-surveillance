@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'ngx-webstorage';
@@ -23,26 +23,37 @@ export class AdminService {
 
   baseUrl = `${environment.baseUrl}/admin`;
 
-     create(post: Post){
-      return this.httpClient.post(this.baseUrl, post);
+     create(formData: FormData){
+      return this.httpClient.post(this.baseUrl, formData);
     }
 
     getPostsByUsername(username: string){
-      this.httpClient.get<Array<Post>>(`${this.baseUrl}/${username}`).subscribe(resp => {
+      this.httpClient.get<Array<Post>>(`${this.baseUrl}/books/${username}`).subscribe(resp => {
         this.postSubject.next(resp);
         }
       );
     }
   
 
-     update(post: Post){
-      return this.httpClient.put<Post>(this.baseUrl, post)
+     update(formData: FormData){
+      return this.httpClient.put<Post>(this.baseUrl, formData)
     }
   
     delete(idPost: Number):Observable<Post>{
       return this.httpClient.delete<Post>(this.baseUrl + '/' + idPost)
     }
   
+
+    // uploadFile(file: File): Observable<HttpEvent<{}>> {
+    //   const formdata: FormData = new FormData();
+    //   formdata.append('file', file);
+    //   const req = new HttpRequest('POST', '<Server URL of the file upload>', formdata, {
+    //       reportProgress: true,
+    //       responseType: 'text'
+    //   });
+    
+    //   return this.http.request(req);
+    //  }
 
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AttachSession } from 'protractor/built/driverProviders';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -8,9 +9,12 @@ import { AuthService } from '../services/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-  }
+  //   if (this.authService.isTokenExpired()){
+  //     this.authService.logout();
+  //   }
+ }
 
 }
