@@ -16,7 +16,7 @@ export class HandlePostComponent implements OnInit {
   isTrue() {
     this.condition = false;
   }
-  
+
   isFalse() {
     this.condition = true;
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AddPostService } from '../../../services/post.service';
@@ -49,11 +49,9 @@ export class AddPostComponent implements OnInit {
 
   initForm() {
     this.addPostForm = new FormGroup({
-      title: new FormControl(''),
-      //[Validators.required]
-      content: new FormControl(''),
+      title: new FormControl('', [Validators.required]),
+      content: new FormControl('', [Validators.required]),
       categorie: this.fb.group({ id: new FormControl('') }),
-      //image: new FormControl('')
     })
   }
 
@@ -74,8 +72,6 @@ export class AddPostComponent implements OnInit {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.userFile = file;
-      console.log(this.userFile);
-
       var reader = new FileReader();
       this.imagePath = file;
       reader.readAsDataURL(file);

@@ -16,15 +16,10 @@ form {
     color: white;
   }
 
-.picture-mail{
-  background-color: rgba(118, 20, 190, 0.76);
-}
-
   h1{
     text-align: center;
   }
 
-  
   form > input,
   form > textarea {
     padding: 12px;
@@ -38,7 +33,6 @@ form {
   
   }
 
- 
   form > input[type="submit"] {
     max-width: 20vw;
     padding-left: 1%;
@@ -52,8 +46,6 @@ form {
     color:white;
   }
 
-
-
-//   @media (min-width: 768px){
-    
-//   }
+.picture-mail{
+  background-color: rgba(118, 20, 190, 0.76);
+}

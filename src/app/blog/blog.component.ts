@@ -10,7 +10,6 @@ import { AddPostService } from '../services/post.service';
 })
 export class BlogComponent implements OnInit {
 
- 
   posts$: Observable<Array<Post>>;
   posts;
   constructor(private postService: AddPostService) { }

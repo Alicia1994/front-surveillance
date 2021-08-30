@@ -11,8 +11,6 @@ import emailjs, {EmailJSResponseStatus, init } from 'emailjs-com';
 })
 export class ContactFormComponent implements OnInit {
 
- 
-
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -23,7 +21,7 @@ export class ContactFormComponent implements OnInit {
     e.preventDefault();
     emailjs
       .sendForm(
-        'service_jjma858',
+        'service_rj8wykc',
         'template_ugwd852',
         e.target as HTMLFormElement,
         'user_GvHXfuTbEi3TsRSIT0Wa6'
@@ -31,14 +29,9 @@ export class ContactFormComponent implements OnInit {
       .then(
         (result: EmailJSResponseStatus) => {
           this.router.navigate(['/contact-success']); 
-
         },
         (error) => {
         }
       );
   }
-
-
- 
-
 }

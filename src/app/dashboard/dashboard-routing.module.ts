@@ -7,7 +7,6 @@ import { EditorArticleComponent } from './POST/editor-article/editor-article.com
 import { UserListComponent } from './USER/user-list/user-list.component';
 import { HandleUserComponent } from './USER/handle-user/handle-user.component';
 import { HandlePostComponent } from './POST/handle-post/handle-post.component';
-import { MyArticlesComponent } from './POST/my-articles/my-articles.component';
 import { AddPostComponent } from './POST/add-post/add-post.component';
 import { UpdatePostComponent } from './POST/update-post/update-post.component';
 
@@ -24,7 +23,6 @@ const routes: Routes = [
       { path: "handle-post/editor-article", component: EditorArticleComponent },
       { path: "handle-user", component: HandleUserComponent },
       { path: "handle-post", component: HandlePostComponent },
-      { path: "handle-post/my-articles", component: MyArticlesComponent },
       { path: "handle-post/add-post", component: AddPostComponent },
       { path: 'handle-post/update-post/:id', component: UpdatePostComponent },
       {path:'', redirectTo: "/admin", pathMatch:'full'}

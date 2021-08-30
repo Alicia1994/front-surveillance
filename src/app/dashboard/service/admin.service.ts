@@ -3,11 +3,11 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'ngx-webstorage';
 import { Observable, Subject } from 'rxjs';
-import {map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { JwtAutResponse } from '../../auth/jwt-aut-response';
 import { LoginPayload } from '../../auth/login-payload';
 import { SignupPayload } from '../../auth/signup-payload';
-import {JwtHelperService} from "@auth0/angular-jwt";
+import { JwtHelperService } from "@auth0/angular-jwt";
 import { environment } from 'src/environments/environment';
 import { Post } from '../../models/post-payload';
 
@@ -18,42 +18,27 @@ export class AdminService {
 
   postSubject = new Subject<Post[]>();
 
-  constructor(private httpClient: HttpClient) {
-  }
+  constructor(private httpClient: HttpClient) { }
 
   baseUrl = `${environment.baseUrl}/admin`;
 
-     create(formData: FormData){
-      return this.httpClient.post(this.baseUrl, formData);
-    }
+  create(formData: FormData) {
+    return this.httpClient.post(this.baseUrl, formData);
+  }
 
-    getPostsByUsername(username: string){
-      this.httpClient.get<Array<Post>>(`${this.baseUrl}/books/${username}`).subscribe(resp => {
-        this.postSubject.next(resp);
-        }
-      );
+  getPostsByUsername(username: string) {
+    this.httpClient.get<Array<Post>>(`${this.baseUrl}/books/${username}`).subscribe(resp => {
+      this.postSubject.next(resp);
     }
-  
+    );
+  }
 
-     update(formData: FormData){
-      return this.httpClient.put<Post>(this.baseUrl, formData)
-    }
-  
-    delete(idPost: Number):Observable<Post>{
-      return this.httpClient.delete<Post>(this.baseUrl + '/' + idPost)
-    }
-  
+  update(formData: FormData) {
+    return this.httpClient.put<Post>(this.baseUrl, formData)
+  }
 
-    // uploadFile(file: File): Observable<HttpEvent<{}>> {
-    //   const formdata: FormData = new FormData();
-    //   formdata.append('file', file);
-    //   const req = new HttpRequest('POST', '<Server URL of the file upload>', formdata, {
-    //       reportProgress: true,
-    //       responseType: 'text'
-    //   });
-    
-    //   return this.http.request(req);
-    //  }
-
+  delete(idPost: Number): Observable<Post> {
+    return this.httpClient.delete<Post>(this.baseUrl + '/' + idPost)
+  }
 
 }

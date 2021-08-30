@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Post } from 'src/app/models/post-payload';
 import { AddPostService } from 'src/app/services/post.service';
+import { environmentApi } from 'src/environments/environment';
 
 @Component({
   selector: 'app-last-articles',
@@ -19,6 +20,11 @@ export class LastArticlesComponent implements OnInit {
 
   ngOnInit() {
     this.posts$ = this.addPostService.findAll();
+  }
+
+
+  path(post: Post): string{
+    return `${environmentApi.apiUrlImage}/${post.id}/${post.image}`;
   }
 
 }

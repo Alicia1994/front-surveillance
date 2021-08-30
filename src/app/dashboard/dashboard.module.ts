@@ -10,7 +10,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HandleUserComponent } from './USER/handle-user/handle-user.component';
 import { HandlePostComponent } from './POST/handle-post/handle-post.component';
-import { MyArticlesComponent } from './POST/my-articles/my-articles.component';
 import { UpdatePostComponent } from './POST/update-post/update-post.component';
 import { AddPostComponent } from './POST/add-post/add-post.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
@@ -24,7 +23,6 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     UserListComponent,
     HandleUserComponent,
     HandlePostComponent,
-    MyArticlesComponent,
     UpdatePostComponent,
     AddPostComponent
   ],

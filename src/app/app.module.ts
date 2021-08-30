@@ -29,7 +29,6 @@ import { CommonModule } from '@angular/common';
 import { ContactSuccessComponent } from './contact-form/contact-success/contact-success.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AlertsComponent } from './alerts/alerts.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -72,7 +71,6 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     SignupSuccessComponent,
     ProfilComponent,
     ContactSuccessComponent,
-    AlertsComponent,
     CalendarComponent,
     UpdateProfilComponent,
     AboutComponent

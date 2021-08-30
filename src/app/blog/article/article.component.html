@@ -1,41 +1,23 @@
+<div class="container">
 
-
-    <div class="container">
-
-      <div class="picture"></div>
-      <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-          <h1 class="article-title">{{post?.title}}</h1>
-          <span>
-                    <p class="article-author">par {{post?.username}}</p>
-                    <p class="article-created"  *ngIf= "post?.updatedOn === post?.createdOn">{{setTimeToMoment(post?.createdOn)}}</p>
-                    <p class="article-updated" *ngIf= "post?.updatedOn !== post?.createdOn">Mise à jour : {{setTimeToMoment(post?.updatedOn)}}</p> 
-
-                </span>
-          <hr>
-          <p class="article-content" [innerHTML]="post?.content"></p>
-          <hr>
-
-          <button class="btn btn-info" type="button" routerLink="/blog">Retour</button>
-
-          
-        </div>
-      </div>
-  
+  <div class="picture"></div>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <h1 class="article-title">{{post?.title}}</h1>
+      <span>
+        <p class="article-author">par {{post?.username}}</p>
+        <p class="article-created" 
+        *ngIf="post?.updatedOn === post?.createdOn">
+        {{setTimeToMoment(post?.createdOn)}}</p>
+        <p class="article-updated" 
+        *ngIf="post?.updatedOn !== post?.createdOn">
+        Mise à jour : {{setTimeToMoment(post?.updatedOn)}}</p>
+      </span>
+      <hr>
+      <p class="article-content" [innerHTML]="post?.content"></p>
+      <hr>
+      <button class="btn btn-info" type="button" routerLink="/blog">Retour</button>
     </div>
-  
-
-
-<!-- <div class="container">
-    <div class="picture"></div>
-    <div class="content">
-        <div class="title"><a href="/post/{{post.id}}" class="blog-title">{{post.title}}</a></div>
-        <div class="publication-date"><i class="fas fa-user"></i> Author: <p>{{post.username}}</p></div>
-        <p [innerHTML]="post.content"></p>
-        <a type="button" href="/post/{{post.id}}" class="read-more btn btn-default">Lire plus</a>
-
-    </div>
-</div> -->
-
-
+  </div>
+</div>

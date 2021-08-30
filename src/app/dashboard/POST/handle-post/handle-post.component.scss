@@ -5,7 +5,6 @@ h1{
     border: solid;
 }
 
-
 .container {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -34,7 +33,6 @@ $thin: 300;
 $normal: 400;
 $bold: 600;
 $br: 4px;
-
 
 a {
     text-decoration:none;
@@ -71,10 +69,8 @@ a {
       background:$main-dark;
       color:white;
     }
-  }
-  
+  } 
 }
-
 
 button{
   background-color: white;
@@ -84,7 +80,6 @@ button{
   border-image-source: linear-gradient(#FE58ED, #5890FE);
   width: 250px;
   align-self: center;
-
 }
 
 .btn-info{
@@ -95,9 +90,7 @@ button{
   margin: 5px;
   color: rgba(88, 144, 254, 1);
   font-weight: 600;
-  
 }
-
 
 .btn {
   align-self: center;

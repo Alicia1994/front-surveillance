@@ -14,17 +14,16 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loginPayload: LoginPayload;
 
-
   constructor(private authService: AuthService, private router: Router) {
     this.loginForm = new FormGroup({
       username: new FormControl(),
-      password : new FormControl()
+      password: new FormControl()
     })
     this.loginPayload = {
-      username:'',
+      username: '',
       password: ''
     }
-   }
+  }
 
   ngOnInit(): void {
   }
@@ -33,14 +32,13 @@ export class LoginComponent implements OnInit {
     this.loginPayload.username = this.loginForm.get('username').value;
     this.loginPayload.password = this.loginForm.get('password').value;
 
-    this.authService.login(this.loginPayload).subscribe(data=> {
-      if(data){
+    this.authService.login(this.loginPayload).subscribe(data => {
+      if (data) {
         console.log('login success');
-        this.router.navigateByUrl('/blog'); 
+        this.router.navigateByUrl('/blog');
       } else {
         console.log("login failed")
       }
     })
-    }
-
+  }
 }

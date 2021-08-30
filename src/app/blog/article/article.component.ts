@@ -13,11 +13,13 @@ import { AddPostService } from 'src/app/services/post.service';
 })
 export class ArticleComponent implements OnInit {
 
-
   post: Post;
   idPost: Number;
 
-  constructor(private router : Router, private activatedRouter: ActivatedRoute, private postService: AddPostService) {
+  constructor(
+    private router : Router, 
+    private activatedRouter: ActivatedRoute, 
+    private postService: AddPostService) {
   }
 
   ngOnInit() {
@@ -30,7 +32,6 @@ export class ArticleComponent implements OnInit {
     },(err: any) => {
       console.log('Failure Response');  
     })
-    
   }
 
   setTimeToMoment(date: string){
@@ -47,30 +48,4 @@ export class ArticleComponent implements OnInit {
     }
     //console.log(new Date('2021-08-13 13:43').getHours())
   }
-
-  // public deletePost(): void{
-  //   if(confirm('Voulez-vous réellement supprimer cet article ?')){
-  //     this.postService.delete(this.idPost).subscribe(
-  //       data => {
-          
-  //         // CODE JS POUR REFRESH
-  //         this.router.navigateByUrl('/blog');
-  //         console.log(data);
-  //       });
-  //   }
-  // }
-
-  // this.postSub = this.addPostService.delete(id).subscribe(data =>{ 
-      
-  //   console.log("ok")});
-  //   this.posts$ = this.posts$.pipe(
-  //     map(posts => posts.filter(post => post.id != id))
-  //   )
-
-  // public updatePost(){
-  //   this.router.navigateByUrl('update-post/' + this.idPost);
-  // }
-
- 
-
 }

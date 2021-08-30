@@ -1,27 +1,19 @@
 <div class=container-full>
 
-    <div class="title-dash">
-        <h1>Mon tableau de bord</h1>
+  <div class="title-dash">
+    <h1>Mon tableau de bord</h1>
 
-        <div class="container">
-            <div class="panel comment" *ngIf="users$ | async as users" routerLinkActive ="active" [routerLinkActiveOptions]="{exact: true}">
-                <a  routerLink="/admin/handle-user"><span>{{users.length}} </span>Users</a>
-              </div>
-            <div class="panel post" *ngIf="posts$ | async as posts" routerLinkActive ="active" [routerLinkActiveOptions]="{exact: true}">
-              <a routerLink="/admin/handle-post"><span>{{posts.length}} </span>Posts</a>
-            </div>
-           
-          </div>
+    <div class="container">
+      <div class="panel comment" *ngIf="users$ | async as users" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}">
+        <a routerLink="/admin/handle-user"><span>{{users.length}} </span>Users</a>
+      </div>
+      <div class="panel post" *ngIf="posts$ | async as posts" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}">
+        <a routerLink="/admin/handle-post"><span>{{posts.length}} </span>Posts</a>
+      </div>
     </div>
-    <router-outlet></router-outlet>
+  </div>
+  <router-outlet></router-outlet>
 
 </div>
-
-<!-- <button class="button-succeed" > USER</button>
-<button class="button-succeed" > ADMIN</button> 
-<div *ngIf="boolean; else elseBlock">
-    <app-user-list></app-user-list>
-</div>
-<ng-template #elseBlock>
-    <app-admin-list></app-admin-list>
-</ng-template>  -->

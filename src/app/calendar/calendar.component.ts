@@ -25,7 +25,7 @@ export class CalendarComponent {
     dateClick: this.handleDateClick.bind(this), // bind is important!
     googleCalendarApiKey: 'AIzaSyDZ_xoUZK8Jy18XxvbZdrzuPhbRWY5shJU',
   events: {
-    googleCalendarId: 'aliciaderradji@gmail.com'
+    googleCalendarId: 'asso.surveillance@gmail.com'
   }
   };
 

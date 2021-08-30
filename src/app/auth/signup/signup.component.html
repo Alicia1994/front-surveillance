@@ -8,35 +8,38 @@
 
                     <div class="form-group">
                         <label for="formInput">
-                            <p>Username</p>
+                            <p>Username<a class="bulle"><i class="far fa-question-circle"></i><span> obligatoire </span></a></p>
                         </label>
                         <input type="text" class="form-control" id="formInput" placeholder=""
                             formControlName="username">
                     </div>
                     <div class="form-group">
                         <label for="formInput">
-                            <p>Adresse mail</p>
+                            <p>Adresse mail<a class="bulle"><i class="far fa-question-circle"></i><span> Formail mail obligatoire </span></a></p>
                         </label>
-                        <input type="email" 
+                        <input type="email"
                             [ngClass]="{'is-invalid' : (signupForm.get('email')?.dirty || signupForm.get('email')?.touched ) && signupForm.get('email')?.invalid}"
                             class="form-control" id="formInput" placeholder="" formControlName="email">
                     </div>
 
                     <div class="form-group">
                         <label for="formInput">
-                            <p>Mot de passe</p>
+                            <p>Mot de passe<a class="bulle"><i class="far fa-question-circle"></i><span> 8 caractères au moins </span></a></p>
                         </label>
-                        <input type="password"
-                            class="form-control"
+                        <input type="password" class="form-control"
                             [ngClass]="{'is-invalid' : (signupForm.get('password')?.dirty || signupForm.get('password')?.touched ) && signupForm.get('password')?.invalid}"
                             id="formInput" placeholder="" formControlName="password">
                     </div>
                     <button class="btn btn-block btn-primary btn-lg" [disabled]="signupForm.invalid" type="submit">Créer
                         mon compte</button>
-                        <div class="account"><span><a class="nav-link active" aria-current="page"
-                                    routerLinkActive="active" routerLink="/connexion">J'ai déjà un compte</a></span>
-                        </div>
-
+                    <div class="account">
+                        <span>
+                            <a class="nav-link active" aria-current="page" routerLinkActive="active"
+                                routerLink="/connexion">
+                                J'ai déjà un compte
+                            </a>
+                        </span>
+                    </div>
                 </form>
             </div>
         </div>

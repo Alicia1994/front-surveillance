@@ -28,21 +28,17 @@
         <button class="actualites" (click)="clickActualites()"> Actualités</button>
         <button class="lutter" (click)="clickAgir()">Agir</button>
         <button class="lutter" (click)="clickAll()">Tous</button>
-  
       </div>
-  
-
 
       <!-- <div class="search-article">
             <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"  placeholder="Rechercher par titre..." >
           </div> -->
 
-
       <div class="grid-row">
         <div class="grid-item" *ngFor="let post of posts">
           <div class="grid-item-wrapper">
             <div class="grid-item-container">
-              <div class="image"></div>
+              <div class="image"><img [src]="path(post)"></div>
               <div class="grid-item-content">
                 <span class="item-title">{{post?.title}}</span>
                 <span class="item-category">Catégorie</span>
@@ -59,11 +55,6 @@
           </div>
         </div>
       </div>
-
-
-
-
-
     </ng-template>
 
   </div>

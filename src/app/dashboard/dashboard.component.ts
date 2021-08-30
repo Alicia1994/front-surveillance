@@ -19,17 +19,14 @@ export class DashboardComponent implements OnInit {
   users$: Observable<Array<User>>;
   posts$: Observable<Array<Post>>;
 
-
-
   constructor(private userService: UserService, private postService: AddPostService) { }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.users$ = this.userService.findAllUsers()
     this.posts$ = this.postService.findAll()
-
   }
 
-  switchAdmin(){
+  switchAdmin() {
     this.boolean = false;
   };
 
