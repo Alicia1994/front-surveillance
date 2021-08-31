@@ -5,10 +5,12 @@
 
 .text-uppercase{
     font-weight: 600;
+    font-size: 1rem;
 }
 
 .description{
     text-align: left;
+    font-size: 0.8rem;
 }
 
 li{
@@ -16,12 +18,18 @@ li{
 }
 
 h5{
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: 0.8rem;
+    font-weight: 600px;
+}
+
+.list-unstyled{
+    margin-left: 15px;
 }
 
 a{
     color: black;
+    font-size: 0.8rem;
+    padding-bottom: 0px;
 }
 
 a:hover{
@@ -63,11 +71,14 @@ border: transparent;
     background: blueviolet;
     color: white;
     height: 45px;
+    margin-left: 5px;
+    border-radius: 5px;
 }
 
 @media (min-width: 767px){
     .btn-newsletter{
         width: auto;
+        padding: 5px;
     }
 }
 

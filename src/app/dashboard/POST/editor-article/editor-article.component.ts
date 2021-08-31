@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { Subscription, pipe, Observable } from 'rxjs';
@@ -7,6 +7,8 @@ import { Post } from 'src/app/models/post-payload';
 import { AddPostService } from 'src/app/services/post.service';
 import { environmentApi } from 'src/environments/environment';
 import { AdminService } from '../../service/admin.service';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
   selector: 'app-editor-article',
@@ -22,10 +24,15 @@ export class EditorArticleComponent implements OnInit {
   posts$: Observable<Array<Post>>;
   data;
   searchText: string;
+  modalRef: BsModalRef;
+  idToBeDeleted = '';
+  message: string;
 
   constructor(private addPostService: AddPostService,
     private router: Router,
-    private adminService: AdminService) { }
+    private adminService: AdminService,
+    private modalService: BsModalService
+    ) { }
 
   ngOnInit() {
     this.posts$ = this.addPostService.findAll().pipe(
@@ -81,10 +88,31 @@ export class EditorArticleComponent implements OnInit {
       map(posts =>
         posts.filter(post => post.id != id))
     )
+    this.message = 'Confirmed!';
+    this.modalRef.hide();
+    this.delete();
   }
 
   path(post: Post): string {
     return `${environmentApi.apiUrlImage}/${post.id}/${post.image}`;
+  }
+
+  // HANDLE MODAL
+
+  openModal(template: TemplateRef<any>, id: any) {
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+    this.idToBeDeleted = id;
+  }
+
+
+  delete():void{
+    console.log('deleted',this.idToBeDeleted,' record');
+  }
+
+  decline(): void {
+    this.message = 'Declined!';
+    this.modalRef.hide();
+
   }
 
 }

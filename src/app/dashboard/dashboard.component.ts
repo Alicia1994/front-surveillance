@@ -6,6 +6,7 @@ import { Post } from '../models/post-payload';
 import { User } from '../models/user';
 import { AddPostService } from '../services/post.service';
 import { UserService } from '../services/user.service';
+import { AdminService } from './service/admin.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,10 +20,13 @@ export class DashboardComponent implements OnInit {
   users$: Observable<Array<User>>;
   posts$: Observable<Array<Post>>;
 
-  constructor(private userService: UserService, private postService: AddPostService) { }
+  constructor(
+    private userService: UserService, 
+    private adminService: AdminService,
+    private postService: AddPostService) { }
 
   ngOnInit() {
-    this.users$ = this.userService.findAllUsers()
+    this.users$ = this.adminService.findAllUsers()
     this.posts$ = this.postService.findAll()
   }
 

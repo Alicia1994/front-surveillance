@@ -19,5 +19,4 @@ export class Post {
       this.categorie = categorie;
     }
    
-
 }

@@ -49,7 +49,7 @@ button{
 }
 
 .read-article{
-    padding: 5px;
+ //   padding: 5px;
     border-image-slice: 1;
     border-width: 4px;
     border-image-source: linear-gradient(#FE58ED, #5890FE);
@@ -59,7 +59,7 @@ button{
 }
 
 .read-article-text{
-    margin: 5px;
+    margin: 2px;
     color: rgba(88, 144, 254, 1);
     font-weight: 600;
 }
@@ -140,6 +140,7 @@ img {
   text-align: center;
   display: flex;
   flex-direction: column;
+  height: -webkit-fill-available;
 }
 
 .card_title {
@@ -170,6 +171,14 @@ img {
     .cards_item {
         width: 50%;
       }
+
+      .card_image{
+        height: 35%;
+      }
+      .card_content{
+        height: -webkit-fill-available;
+
+      }
   
   }
 
@@ -182,5 +191,13 @@ img {
   }
   .read-article{
   max-height: 20%;
+  }
+
+  .card_image{
+    width: 70%;
+  }
+  .card_content{
+    width: -webkit-fill-available;
+
   }
   }

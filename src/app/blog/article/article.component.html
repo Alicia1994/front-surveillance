@@ -1,6 +1,6 @@
 <div class="container">
 
-  <div class="picture"></div>
+  <div class="picture"><img [src]="path(post)"></div>
   <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-10">
@@ -12,7 +12,7 @@
         {{setTimeToMoment(post?.createdOn)}}</p>
         <p class="article-updated" 
         *ngIf="post?.updatedOn !== post?.createdOn">
-        Mise à jour : {{setTimeToMoment(post?.updatedOn)}}</p>
+        {{setTimeToMoment(post?.updatedOn)}}</p>
       </span>
       <hr>
       <p class="article-content" [innerHTML]="post?.content"></p>

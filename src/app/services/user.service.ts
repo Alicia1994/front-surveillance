@@ -16,9 +16,6 @@ export class UserService {
 
   baseUrl = `${environment.baseUrl}/users`;
 
-  findAllUsers(): Observable<Array<User>> {
-    return this.httpClient.get<Array<User>>(this.baseUrl);
-  }
 
   findUserById(id: number) {
     return this.httpClient.get<Array<User>>(`${this.baseUrl}/${id}`)
@@ -28,19 +25,12 @@ export class UserService {
     return this.httpClient.get<Array<User>>(`${this.baseUrl}/name/${username}`)
   }
 
-  findAllAdmin(): Observable<Array<User>> {
-    return this.httpClient.get<Array<User>>(this.baseUrl + "/admin");
+  findAllUsers(): Observable<Array<User>> {
+    return this.httpClient.get<Array<User>>(this.baseUrl);
   }
 
   deleteUser(idUser: Number): Observable<User> {
     return this.httpClient.delete<User>(this.baseUrl + '/' + idUser)
   }
 
-  deleteAdmin(idAdmin: Number): Observable<User>{
-    return this.httpClient.delete<User>(this.baseUrl + '/admin/' + idAdmin)
-  }
-
-  addUserInPost(username: string, post: Post) {
-    return this.httpClient.post<User>(`${this.baseUrl}/${username}`, post);
-  }
 }

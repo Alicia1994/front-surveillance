@@ -45,12 +45,24 @@
                 <span class="item-excerpt"><i class="fas fa-user"></i>
                   {{post?.username}}, <i class="far fa-calendar-alt"></i>
                   {{setTimeToMoment(post?.createdOn)}}, #{{post?.categorie?.name}}</span>
-                <div class="buttons">
-                  <button class="read-article" routerLink="/post/{{post.id}}">Visualiser</button>
-                  <button class="read-article" routerLink="/admin/handle-post/update-post/{{post.id}}">Modifier</button>
-                  <button class="read-article" (click)="deletePost(post.id)">Supprimer</button>
-                </div>
               </div>
+            </div>
+            <div class="buttons">
+              <button class="read-article" routerLink="/post/{{post.id}}">Visualiser</button>
+              <button class="read-article" routerLink="/admin/handle-post/update-post/{{post.id}}">Modifier</button>
+              <button class="read-article" (click)="openModal(template)">Supprimer</button>
+
+              <ng-template #template>
+                <div class="modal-body text-center">
+                    <p>Voulez-vous vraiment supprimer l'admin ?</p>
+                    <button type="button" class="btn btn-success" (click)="deletePost(post.id)">Oui</button>
+                    <button type="button" class="btn btn-danger" (click)="decline()">Annuler</button>
+                </div>
+            </ng-template>
+
+
+
+
             </div>
           </div>
         </div>

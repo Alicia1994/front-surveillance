@@ -1,67 +1,49 @@
 <div class="container">
     <div *ngIf="admins$ | async as admins">
 
-       <div class="seven"> <h1>Liste d'administrateurs</h1></div>
+        <div class="seven">
+            <h1>Liste d'administrateurs</h1>
+        </div>
 
         <div class="no-article" *ngIf="admins.length == 0; else block">
-
             <p>Aucun administrateur enregistré !</p>
-
         </div>
 
         <ng-template #block>
             <section class="main">
-
                 <ul class="table">
                     <li class="title">
                         <div>Pseudo</div>
                         <div>Mail</div>
-                    
-                        <!-- <div>Rôle</div> -->
                         <div>Date</div>
                         <div>Action</div>
                     </li>
-
-
-
-
                     <li *ngFor="let admin of admins">
-
                         <div>{{admin.username}}</div>
                         <div>{{admin.email}}</div>
-
-                        <!-- <div>{{admin.role}}</div> -->
                         <div>{{setTimeToMoment(admin.dateAccount)}}</div>
-                        <div> <a class="bin" (click)="deleteAdmin(admin.id)"> <i class="fas fa-trash"></i></a></div>
+                        <div> <a class="bin" (click)="openModal(template)"> <i class="fas fa-trash"></i></a></div>
 
+                        <ng-template #template>
+                            <div class="modal-body text-center">
+                                <p>Voulez-vous vraiment supprimer cet article ?</p>
+                                <button type="button" class="btn btn-success" (click)="deleteAdmin(admin.id)">Oui</button>
+                                <button type="button" class="btn btn-danger" (click)="decline()">Annuler</button>
+                            </div>
+                        </ng-template>
 
-                        <!-- <td>
-                        <span>{{admin.email}}</span>
-                    </td>
-                    
-                    <td>
-                        <span>{{admin.username}}</span>
-                    </td>
-                    <td>
-                        <span>{{admin.role}}</span>
-                    </td>
-                    <td>
-                        <span>{{setTimeToMoment(admin.dateAccount)}}</span>
-                    </td>
-                    <td>
-                        <a class="bin" (click)="deleteAdmin(admin.id)"> <i class="fas fa-trash"></i></a>
-                    </td> -->
+                        <!-- <div> <a class="bin" (click)="deleteAdmin(admin.id)"> <i class="fas fa-trash"></i></a></div> -->
                     </li>
-
                 </ul>
             </section>
-
+            
         </ng-template>
 
     </div>
-        <button routerLink='/admin/handle-user/add-admin' routerLinkActive="router-link-active" type="button"
-            class="btn btn-border-1">
-            Ajouter un admin
-        </button>
-   
+    <button routerLink='/admin/handle-user/add-admin' routerLinkActive="router-link-active" type="button"
+        class="btn btn-border-1">
+        Ajouter un admin
+    </button>
+
 </div>
+

@@ -2,9 +2,9 @@ import { ConditionalExpr } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
-import { Observable } from 'rxjs';
 import { Post } from 'src/app/models/post-payload';
 import { AddPostService } from 'src/app/services/post.service';
+import { environmentApi } from 'src/environments/environment';
 
 @Component({
   selector: 'app-article',
@@ -47,5 +47,9 @@ export class ArticleComponent implements OnInit {
       return day + " à " + hour
     }
     //console.log(new Date('2021-08-13 13:43').getHours())
+  }
+
+  path(post: Post): string {
+    return `${environmentApi.apiUrlImage}/${post?.id}/${post?.image}`;
   }
 }

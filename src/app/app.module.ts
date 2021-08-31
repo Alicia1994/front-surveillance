@@ -42,6 +42,12 @@ import { Calendar } from '@fullcalendar/core';
 import googleCalendarPlugin from '@fullcalendar/google-calendar';
 import { UpdateProfilComponent } from './profil/update-profil/update-profil.component';
 import { AboutComponent } from './about/about.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { ConfirmationDialogService } from './confirmation-dialog/confirmation-dialog.service';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { BsModalService } from 'ngx-bootstrap/modal';
+
+
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -73,8 +79,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ContactSuccessComponent,
     CalendarComponent,
     UpdateProfilComponent,
-    AboutComponent
-    
+    AboutComponent,
+    ConfirmationDialogComponent
     ],
   imports: [
     CommonModule,
@@ -83,15 +89,18 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
+    NgbModule,
     NgxWebstorageModule.forRoot(),
     HttpClientModule,
     DashboardModule,
     NgbModule,
     FullCalendarModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule, 
+    ModalModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true},
-  onlyGuard],
+  onlyGuard, ConfirmationDialogService, BsModalService ],
+  entryComponents: [ ConfirmationDialogComponent ],
   bootstrap: [AppComponent]
 })
 
