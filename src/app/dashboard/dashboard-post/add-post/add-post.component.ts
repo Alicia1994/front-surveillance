@@ -35,10 +35,10 @@ export class AddPostComponent implements OnInit {
     private userService: UserService,
     private categorieService: CategorieService,
     private fb: FormBuilder) {
-
     this.addPostForm = new FormGroup({});
   }
 
+  /****** API request to call all users ******/
   ngOnInit() {
     this.initForm();
     this.categorieService.findAll().subscribe((data: any) => {
@@ -46,7 +46,7 @@ export class AddPostComponent implements OnInit {
     })
   }
 
-
+    /****** Form to register the user's informations ******/
   initForm() {
     this.addPostForm = new FormGroup({
       title: new FormControl('', [Validators.required]),
@@ -55,11 +55,12 @@ export class AddPostComponent implements OnInit {
     })
   }
 
+    /****** New Form to send users infos & an image ******/
   addPost() {
     const formData = new FormData();
     const newPost = this.addPostForm.value;
     formData.append('file', this.userFile);
-    formData.append("post", new Blob([JSON.stringify(newPost)], { type: "application/json" }))
+    formData.append('post', new Blob([JSON.stringify(newPost)], { type: "application/json" }))
     this.currentUsername = this.localStorageService.retrieve("username");
     this.adminService.create(formData).subscribe(data => {
       this.router.navigateByUrl('/admin/handle-post');
@@ -68,6 +69,7 @@ export class AddPostComponent implements OnInit {
     })
   }
 
+      /****** Function to display the image ******/
   onSelectFile(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];

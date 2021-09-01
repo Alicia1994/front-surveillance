@@ -1,14 +1,8 @@
-
-
 <div class="container">
     <div *ngIf="users$ | async as users">
-
         <div class="seven"><h1>Liste d'utilisateurs</h1></div>
-
         <div class="no-article" *ngIf="users.length == 0; else block">
-
             <p>Aucun utilisateur enregistré !</p>
-
         </div>
 
         <ng-template #block>
@@ -18,7 +12,6 @@
                     <li class="title">
                         <div>Pseudo</div>
                         <div>Mail</div>
-                        <!-- <div>Rôle</div> -->
                         <div>Date</div>
                         <div>Action</div>
                     </li>
@@ -27,27 +20,20 @@
 
                         <div>{{user.username}}</div>
                         <div>{{user.email}}</div>
-
-                        <!-- <div>{{admin.role}}</div> -->
                         <div>{{setTimeToMoment(user.dateAccount)}}</div>
                         <div>  <a class="bin" type="button" (click)="openModal(template)"> <i class="fas fa-trash"></i></a></div>
 
                         <ng-template #template>
                             <div class="modal-body text-center">
                                 <p>Voulez-vous vraiment supprimer le user ?</p>
-                                <button type="button" class="btn btn-success" (click)="deleteUser(user.id)">Oui</button>
+                                <button type="button" class="btn btn-success" (click)="deleteUser(user.id)">Supprimer</button>
                                 <button type="button" class="btn btn-danger" (click)="decline()">Annuler</button>
                             </div>
                         </ng-template>
 
-
                     </li>
-
                 </ul>
+                
             </section>
-
         </ng-template>
-
-   
-   
 </div>

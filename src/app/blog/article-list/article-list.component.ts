@@ -23,7 +23,10 @@ export class ArticleListComponent implements OnInit {
   posts$: Observable<Array<Post>>;
   searchText: string;
 
-  constructor(private addPostService: AddPostService, private router: Router, private authService: AuthService) { }
+  constructor(
+    private addPostService: AddPostService, 
+    private router: Router, 
+    private authService: AuthService) { }
 
   ngOnInit() {
     this.posts$ = this.addPostService.findAll().pipe(

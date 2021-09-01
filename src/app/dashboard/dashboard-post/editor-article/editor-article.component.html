@@ -1,20 +1,5 @@
 <div class="container">
 
-
-  <!-- MESSAGE QUAND IL N'Y A PAS DE PUBLICATIONS -->
-  <!-- <div class="no-article" *ngIf="this.posts!==null">
-        <p>Pas encore de publication</p>
-    </div> -->
-
-  <!--     <div class="buttons">
-        <button class="focus"> FOCUS </button>
-        <button class="news"> ACTUALITÉS</button>
-        <button class="fight">LUTTER</button>
-    </div> -->
-
-  <!-- <div class="row" *ngFor="let post of posts | async"> -->
-
-
   <div *ngIf="posts$ | async as posts">
     <div class="no-article" *ngIf="posts.length == 0; else block">
 
@@ -23,16 +8,13 @@
 
     <ng-template #block>
 
+      <!-- Display buttons of categories -->
       <div class="buttons-categories">
-        <button class="focus" (click)="clickFocus()"> Focus </button>
-        <button class="actualites" (click)="clickActualites()"> Actualités</button>
-        <button class="lutter" (click)="clickAgir()">Agir</button>
-        <button class="lutter" (click)="clickAll()">Tous</button>
+        <button class="focus" (click)="clickCat('Focus')"> Focus </button>
+        <button class="actualites" (click)="clickCat('Actualités')"> Actualités</button>
+        <button class="lutter" (click)="clickCat('Agir')">Agir</button>
+        <button class="all" (click)="clickAll()">Tous</button>
       </div>
-
-      <!-- <div class="search-article">
-            <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"  placeholder="Rechercher par titre..." >
-          </div> -->
 
       <div class="grid-row">
         <div class="grid-item" *ngFor="let post of posts">
@@ -52,16 +34,15 @@
               <button class="read-article" routerLink="/admin/handle-post/update-post/{{post.id}}">Modifier</button>
               <button class="read-article" (click)="openModal(template)">Supprimer</button>
 
+
+              <!-- Display the modal for the suppression  -->
               <ng-template #template>
                 <div class="modal-body text-center">
-                    <p>Voulez-vous vraiment supprimer l'admin ?</p>
-                    <button type="button" class="btn btn-success" (click)="deletePost(post.id)">Oui</button>
-                    <button type="button" class="btn btn-danger" (click)="decline()">Annuler</button>
+                  <p>Voulez-vous vraiment supprimer l'admin ?</p>
+                  <button type="button" class="btn btn-success" (click)="deletePost(post.id)">Oui</button>
+                  <button type="button" class="btn btn-danger" (click)="decline()">Annuler</button>
                 </div>
-            </ng-template>
-
-
-
+              </ng-template>
 
             </div>
           </div>

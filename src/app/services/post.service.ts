@@ -11,7 +11,6 @@ import { User } from '../models/user';
 })
 export class AddPostService {
 
-  
   constructor(private httpClient: HttpClient) {
   }
 
@@ -29,9 +28,6 @@ export class AddPostService {
     return this.httpClient.get<Array<User>>(`${this.baseUrl}/name/${username}`)
   }
 
-  // deletePosts(){
-  //   return this.httpClient.delete('http://localhost:8080/api/posts/')
-  // }
 }
 
 

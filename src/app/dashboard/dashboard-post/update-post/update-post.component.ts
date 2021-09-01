@@ -22,8 +22,6 @@ export class UpdatePostComponent implements OnInit {
   categories: [] = [];
   public imagePath;
 
-
-
   constructor(
     private addPostService: AddPostService,
     private router: Router,
@@ -74,7 +72,6 @@ export class UpdatePostComponent implements OnInit {
       }
     )
   }
-
 
   onSelectFile(event) {
     if (event.target.files.length > 0) {

@@ -21,7 +21,7 @@ import { LegalMentionsComponent } from './legal-mentions/legal-mentions.componen
 import { RouterModule } from '@angular/router';
 import { SignupSuccessComponent } from './auth/signup-success/signup-success.component';
 import { NgxWebstorageModule } from 'ngx-webstorage';
-import { AddPostComponent } from './dashboard/POST/add-post/add-post.component';
+import { AddPostComponent } from './dashboard/dashboard-post/add-post/add-post.component';
 //import { EditorModule } from '@tinymce/tinymce-angular';
 import { HttpClientInterceptor } from './interceptors/http-client-interceptor';
 import { ProfilComponent } from './profil/profil.component';

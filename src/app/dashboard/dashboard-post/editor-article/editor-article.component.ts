@@ -41,19 +41,9 @@ export class EditorArticleComponent implements OnInit {
       }));
   }
 
-  clickAgir() {
+  clickCat(category) {
     this.posts$ = this.addPostService.findAll().pipe(
-      map(posts => posts.filter(post => post?.categorie?.name == "Agir")));
-  }
-
-  clickActualites() {
-    this.posts$ = this.addPostService.findAll().pipe(
-      map(posts => posts.filter(post => post?.categorie?.name == "Actualités")));
-  }
-
-  clickFocus() {
-    this.posts$ = this.addPostService.findAll().pipe(
-      map(posts => posts.filter(post => post?.categorie?.name == "Focus")));
+      map(posts => posts.filter(post => post?.categorie?.name == category)));
   }
 
   clickAll() {
@@ -63,7 +53,7 @@ export class EditorArticleComponent implements OnInit {
       }));
   }
 
-  // ****** Handle the publication of the articles *********
+  // ****** Handle the publication of the articles with Moment Library *********
   setTimeToMoment(date: string) {
     const date1 = moment(date, "YYYY-MM-DD h-mm");
     const date2 = moment(new Date().toLocaleString(), "DD/MM/YYYY, h:mm:s");
@@ -76,13 +66,11 @@ export class EditorArticleComponent implements OnInit {
       const hour = dateSplit[1].replace("-", "h")
       return day + " à " + hour
     }
-    //console.log(new Date('2021-08-13 13:43').getHours())
   }
 
+  // ****** Handle the publication of the articles with Moment Library *********
   deletePost(id: number) {
     this.postSub = this.adminService.delete(id).subscribe(data => {
-
-      console.log("ok")
     });
     this.posts$ = this.posts$.pipe(
       map(posts =>
@@ -103,7 +91,6 @@ export class EditorArticleComponent implements OnInit {
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
     this.idToBeDeleted = id;
   }
-
 
   delete():void{
     console.log('deleted',this.idToBeDeleted,' record');

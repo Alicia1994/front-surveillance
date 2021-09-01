@@ -1,16 +1,12 @@
 h1 {
-    //max-width: 150px;
     margin: 10px 20px;
     padding: 10px 40px;
-   // border-bottom: 3px solid #e30999;
     font-size: 1.4em;
     text-align: center;
-
   }
 
 .bin{
     padding: 0px;
-    //text-align-last: center;
     cursor: pointer;
 }
 
@@ -25,7 +21,6 @@ h1 {
 -o-transform:scale(1.25); /* Opera */
 transform:scale(1.25);
 }
-
 
 .container{
     display: flex;
@@ -106,7 +101,6 @@ body {
     min-height: 100vh;
   }
   
-  
   .main ul {
     list-style: none;
     margin-right: 20px;
@@ -143,7 +137,6 @@ body {
       font-weight: 600;
   }
   
-
   .seven h1 {
     text-align: center;
         font-size:25px; font-weight:300; color:#222; letter-spacing:1px;

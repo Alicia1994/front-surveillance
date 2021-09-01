@@ -8,7 +8,6 @@ import { AdminService } from '../../service/admin.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
-
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -21,8 +20,6 @@ export class UserListComponent implements OnInit {
   modalRef: BsModalRef;
   idToBeDeleted = '';
   message: string;
-
-
 
   constructor(
     private userService: UserService, 
@@ -53,9 +50,7 @@ export class UserListComponent implements OnInit {
     return date[2] + "/" + date[1] + "/" + date[0];
     }  
 
-
 // HANDLE MODAL
-
 openModal(template: TemplateRef<any>, id: any) {
   this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
   this.idToBeDeleted = id;

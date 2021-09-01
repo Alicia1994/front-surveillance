@@ -11,7 +11,6 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AddAdminComponent implements OnInit {
 
- 
   signupForm: FormGroup;
   signupPayload: SignupPayload;
 

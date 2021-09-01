@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddAdminComponent } from './USER/add-admin/add-admin.component';
-import { AdminListComponent } from './USER/admin-list/admin-list.component';
+import { AddAdminComponent } from './dashboard-user/add-admin/add-admin.component';
+import { AdminListComponent } from './dashboard-user/admin-list/admin-list.component';
 import { DashboardComponent } from './dashboard.component';
-import { EditorArticleComponent } from './POST/editor-article/editor-article.component';
-import { UserListComponent } from './USER/user-list/user-list.component';
-import { HandleUserComponent } from './USER/handle-user/handle-user.component';
-import { HandlePostComponent } from './POST/handle-post/handle-post.component';
-import { AddPostComponent } from './POST/add-post/add-post.component';
-import { UpdatePostComponent } from './POST/update-post/update-post.component';
+import { EditorArticleComponent } from './dashboard-post/editor-article/editor-article.component';
+import { UserListComponent } from './dashboard-user/user-list/user-list.component';
+import { HandleUserComponent } from './dashboard-user/handle-user/handle-user.component';
+import { HandlePostComponent } from './dashboard-post/handle-post/handle-post.component';
+import { AddPostComponent } from './dashboard-post/add-post/add-post.component';
+import { UpdatePostComponent } from './dashboard-post/update-post/update-post.component';
 
 const routes: Routes = [
   {

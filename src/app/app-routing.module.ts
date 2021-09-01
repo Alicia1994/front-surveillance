@@ -32,7 +32,6 @@ const routes: Routes = [
       { path: 'blog', component: BlogComponent },
       { path: 'calendar', component: CalendarComponent },
       {path: 'about', component: AboutComponent},
-
       { path: 'profil', canActivate: [AuthGuard], component: ProfilComponent },
       {
         path: 'admin', canActivate: [AuthGuard], 
