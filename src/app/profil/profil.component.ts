@@ -31,7 +31,6 @@ export class ProfilComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    console.log();
     this.currentUserUsername = this.localStorageService.retrieve("username");
     this.user$ = this.userService.findUserByUsername(this.currentUserUsername);
   }
@@ -42,7 +41,6 @@ export class ProfilComponent implements OnInit {
     }  
 
   deleteAccount(id: number){
-    console.log("ok");
     this.userSub = this.userService.deleteUser(id).subscribe(data =>{ 
       this.authService.logout();
       this.router.navigateByUrl("home");

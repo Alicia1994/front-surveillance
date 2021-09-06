@@ -2,7 +2,7 @@ import { ConditionalExpr } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
-import { Post } from 'src/app/models/post-payload';
+import { Post } from 'src/app/models/post';
 import { AddPostService } from 'src/app/services/post.service';
 import { environmentApi } from 'src/environments/environment';
 

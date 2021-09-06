@@ -79,7 +79,7 @@ export class UpdatePostComponent implements OnInit {
       this.userFile = file;
       var reader = new FileReader();
       this.imagePath = file;
-      console.log(file);
+     // console.log(file);
       reader.readAsDataURL(file);
       reader.onload = (_event) => {
         this.imgURL = reader.result;

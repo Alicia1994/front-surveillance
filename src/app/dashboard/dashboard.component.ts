@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Post } from '../models/post-payload';
+import { Post } from '../models/post';
 import { User } from '../models/user';
 import { AddPostService } from '../services/post.service';
 import { UserService } from '../services/user.service';
@@ -21,7 +21,6 @@ export class DashboardComponent implements OnInit {
   posts$: Observable<Array<Post>>;
 
   constructor(
-    private userService: UserService, 
     private adminService: AdminService,
     private postService: AddPostService) { }
 

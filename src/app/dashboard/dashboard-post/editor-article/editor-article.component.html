@@ -2,12 +2,10 @@
 
   <div *ngIf="posts$ | async as posts">
     <div class="no-article" *ngIf="posts.length == 0; else block">
-
       <p>Vous n'avez publié aucun article sur le blog !</p>
     </div>
 
     <ng-template #block>
-
       <!-- Display buttons of categories -->
       <div class="buttons-categories">
         <button class="focus" (click)="clickCat('Focus')"> Focus </button>
@@ -23,10 +21,10 @@
               <div class="image"><img [src]="path(post)"></div>
               <div class="grid-item-content">
                 <span class="item-title">{{post?.title}}</span>
-                <span class="item-category">Catégorie</span>
+                <span class="item-category">#{{post?.categorie?.name}}</span>
                 <span class="item-excerpt"><i class="fas fa-user"></i>
                   {{post?.username}}, <i class="far fa-calendar-alt"></i>
-                  {{setTimeToMoment(post?.createdOn)}}, #{{post?.categorie?.name}}</span>
+                  {{setTimeToMoment(post?.createdOn)}}</span>
               </div>
             </div>
             <div class="buttons">

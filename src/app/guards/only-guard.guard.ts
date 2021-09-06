@@ -13,7 +13,6 @@ export const onlyGuard = {
     AuthService,
     Router
   ]
-
 };
 
 

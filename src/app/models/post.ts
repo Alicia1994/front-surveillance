@@ -1,4 +1,3 @@
-import { environment, environmentApi } from "src/environments/environment";
 import { Categorie } from "./categorie";
 
 export class Post {
@@ -12,10 +11,9 @@ export class Post {
     public categorie?: Categorie;
     public image?: string;
 
-    constructor(title, content, username, categorie){
+    constructor(title, content, categorie){
       this.title = title;
       this.content = content;
-     // this.username = username;
       this.categorie = categorie;
     }
    

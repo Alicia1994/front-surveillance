@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Post } from '../models/post-payload';
+import { Post } from '../models/post';
 import { AddPostService } from '../services/post.service';
 
 @Component({

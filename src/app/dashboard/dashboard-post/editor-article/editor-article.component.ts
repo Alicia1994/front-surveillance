@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { Subscription, pipe, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Post } from 'src/app/models/post-payload';
+import { Post } from 'src/app/models/post';
 import { AddPostService } from 'src/app/services/post.service';
 import { environmentApi } from 'src/environments/environment';
 import { AdminService } from '../../service/admin.service';
@@ -41,6 +41,7 @@ export class EditorArticleComponent implements OnInit {
       }));
   }
 
+    // ****** Filter by categories *********
   clickCat(category) {
     this.posts$ = this.addPostService.findAll().pipe(
       map(posts => posts.filter(post => post?.categorie?.name == category)));
@@ -68,7 +69,7 @@ export class EditorArticleComponent implements OnInit {
     }
   }
 
-  // ****** Handle the publication of the articles with Moment Library *********
+  // ****** Delete Post by Id after the confirmation on modal *********
   deletePost(id: number) {
     this.postSub = this.adminService.delete(id).subscribe(data => {
     });
@@ -86,7 +87,6 @@ export class EditorArticleComponent implements OnInit {
   }
 
   // HANDLE MODAL
-
   openModal(template: TemplateRef<any>, id: any) {
     this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
     this.idToBeDeleted = id;
@@ -99,7 +99,6 @@ export class EditorArticleComponent implements OnInit {
   decline(): void {
     this.message = 'Declined!';
     this.modalRef.hide();
-
   }
 
 }

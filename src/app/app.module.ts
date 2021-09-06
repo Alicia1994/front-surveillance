@@ -9,7 +9,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { OhFourComponent } from './oh-four/oh-four.component';
 import { LoginComponent } from './auth/login/login.component';
-import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BlogComponent } from './blog/blog.component';
 import { SignupComponent } from './auth/signup/signup.component';
@@ -22,7 +22,6 @@ import { RouterModule } from '@angular/router';
 import { SignupSuccessComponent } from './auth/signup-success/signup-success.component';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { AddPostComponent } from './dashboard/dashboard-post/add-post/add-post.component';
-//import { EditorModule } from '@tinymce/tinymce-angular';
 import { HttpClientInterceptor } from './interceptors/http-client-interceptor';
 import { ProfilComponent } from './profil/profil.component';
 import { CommonModule } from '@angular/common';
@@ -38,7 +37,6 @@ import interactionPlugin from '@fullcalendar/interaction';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { onlyGuard } from './guards/only-guard.guard';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { Calendar } from '@fullcalendar/core';
 import googleCalendarPlugin from '@fullcalendar/google-calendar';
 import { UpdateProfilComponent } from './profil/update-profil/update-profil.component';
 import { AboutComponent } from './about/about.component';
@@ -46,8 +44,6 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
 import { ConfirmationDialogService } from './confirmation-dialog/confirmation-dialog.service';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsModalService } from 'ngx-bootstrap/modal';
-
-
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -93,7 +89,6 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     NgxWebstorageModule.forRoot(),
     HttpClientModule,
     DashboardModule,
-    NgbModule,
     FullCalendarModule,
     Ng2SearchPipeModule, 
     ModalModule

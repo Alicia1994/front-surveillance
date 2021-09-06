@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, pipe, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Post } from 'src/app/models/post-payload';
+import { Post } from 'src/app/models/post';
 import { AddPostService } from 'src/app/services/post.service';
 import * as moment from "moment";
 import { AuthService } from 'src/app/services/auth.service';

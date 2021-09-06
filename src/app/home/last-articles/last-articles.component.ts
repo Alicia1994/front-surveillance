@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Post } from 'src/app/models/post-payload';
+import { Post } from 'src/app/models/post';
 import { AddPostService } from 'src/app/services/post.service';
 import { environmentApi } from 'src/environments/environment';
 

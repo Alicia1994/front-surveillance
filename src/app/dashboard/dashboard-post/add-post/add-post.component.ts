@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AddPostService } from '../../../services/post.service';
-import { Post } from '../../../models/post-payload';
+import { Post } from '../../../models/post';
 import { AdminService } from '../../service/admin.service';
 import { UserService } from 'src/app/services/user.service';
 import { LocalStorageService } from 'ngx-webstorage';
@@ -26,7 +26,6 @@ export class AddPostComponent implements OnInit {
   public imagePath;
   imgURL: any;
 
-
   constructor(
     private addpostService: AddPostService,
     private router: Router,
@@ -38,7 +37,7 @@ export class AddPostComponent implements OnInit {
     this.addPostForm = new FormGroup({});
   }
 
-  /****** API request to call all users ******/
+  /****** API request to call all categories ******/
   ngOnInit() {
     this.initForm();
     this.categorieService.findAll().subscribe((data: any) => {
@@ -46,7 +45,7 @@ export class AddPostComponent implements OnInit {
     })
   }
 
-    /****** Form to register the user's informations ******/
+    /****** Form to register the post's informations ******/
   initForm() {
     this.addPostForm = new FormGroup({
       title: new FormControl('', [Validators.required]),
@@ -55,7 +54,7 @@ export class AddPostComponent implements OnInit {
     })
   }
 
-    /****** New Form to send users infos & an image ******/
+    /****** New Form to send posts infos & an image ******/
   addPost() {
     const formData = new FormData();
     const newPost = this.addPostForm.value;
